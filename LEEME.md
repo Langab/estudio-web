@@ -30,9 +30,21 @@ python3 -m http.server 8765 --directory pagina_web
 
 y abre `http://localhost:8765`.
 
-## Cómo publicarlo
+## Dónde está publicada (para compartir)
 
-Cloudflare Pages → "Upload assets" o conectar un repositorio con esta carpeta como raíz. Sin comando de build. Luego apuntar el dominio y forzar HTTPS (checklist de la sección 8.4 de las políticas).
+- Enlace público: **https://langab.github.io/estudio-web/**
+- Repositorio: https://github.com/Langab/estudio-web (esta carpeta es el repositorio; rama `main`).
+- Para publicar cambios, desde esta carpeta:
+
+```bash
+git add -A && git commit -m "Describe el cambio" && git push
+```
+
+GitHub Pages tarda entre 30 segundos y 2 minutos en reflejarlos. El archivo `.nojekyll` evita que GitHub procese la carpeta; `_headers` solo aplica en Cloudflare Pages.
+
+## Cuando tenga dominio propio
+
+Cloudflare Pages → conectar el repositorio `Langab/estudio-web` sin comando de build (o "Upload assets" con esta carpeta). Luego apuntar el dominio y forzar HTTPS (checklist de la sección 8.4 de las políticas). GitHub Pages sirve para compartir el borrador; el sitio definitivo, según tus propias políticas, va en Cloudflare.
 
 ## Notas de diseño
 
