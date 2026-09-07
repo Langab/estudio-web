@@ -16,7 +16,7 @@
     });
     const wa = `https://wa.me/${S.whatsapp}?text=${encodeURIComponent(S.whatsappSaludo)}`;
     $$("[data-wa]").forEach((a) => (a.href = wa));
-    $$("[data-mail]").forEach((a) => { a.href = "mailto:" + S.email; a.textContent = S.email; });
+    $$("[data-mail]").forEach((a) => { a.href = "mailto:" + S.email; a.textContent = a.dataset.mail || "Mándanos un correo"; });
     $$("[data-ig]").forEach((a) => {
       if (!S.instagram) { a.hidden = true; return; }
       a.href = "https://instagram.com/" + S.instagram; a.textContent = "@" + S.instagram;

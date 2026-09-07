@@ -77,7 +77,7 @@ h1,h2,h3,.h2,.h3{font-family:var(--display);font-variation-settings:"opsz" 96}
 .nav.is-scrolled{border-bottom-color:var(--line-2)}
 .nav__in{display:flex;align-items:center;justify-content:space-between;height:100%}
 .nav__logo{font-family:var(--display);font-weight:800;letter-spacing:-.04em;font-size:22px;color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:9px}
-.logo{width:26px;height:26px;flex-shrink:0}
+.logo{width:36px;height:24px;flex-shrink:0}
 .nav__links{display:flex;align-items:center;gap:26px}
 .nav__links a{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;opacity:.78;transition:opacity .2s}
 .nav__links a:hover{opacity:1}
@@ -130,7 +130,7 @@ h1,h2,h3,.h2,.h3{font-family:var(--display);font-variation-settings:"opsz" 96}
 .mac__boot i{display:block;background:#0b0b0d;transition:transform .8s var(--ease-out)}
 .mac__boot i:nth-child(2){transition-delay:.05s}.mac__boot i:nth-child(3){transition-delay:.1s}.mac__boot i:nth-child(4){transition-delay:.15s}
 .mac__boot i:nth-child(5){transition-delay:.2s}.mac__boot i:nth-child(6){transition-delay:.25s}.mac__boot i:nth-child(7){transition-delay:.3s}.mac__boot i:nth-child(8){transition-delay:.35s}
-.mac__boot svg{position:absolute;left:50%;top:50%;width:10%;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .5s var(--ease),transform .6s var(--ease-out)}
+.mac__boot svg{position:absolute;left:50%;top:50%;width:14%;transform:translate(-50%,-50%) scale(.85);opacity:0;transition:opacity .5s var(--ease),transform .6s var(--ease-out)}
 .mac__screen.is-boot .mac__boot svg{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .mac__screen.is-on .mac__boot svg{opacity:0;transition-duration:.25s}
 .mac__screen.is-on .mac__boot i{transform:translateX(102%)}
@@ -482,11 +482,12 @@ h1,h2,h3,.h2,.h3{font-family:var(--display);font-variation-settings:"opsz" 96}
 .foot::after{content:"";position:absolute;inset:0 0 auto;height:4px;background:var(--tri)}
 .foot__in{position:relative;display:grid;grid-template-columns:1fr auto;gap:28px 48px;align-items:start}
 .foot__logo{display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.04em;text-decoration:none;border-bottom:0}
-.foot__logo .logo{width:28px;height:28px}
+.foot__logo .logo{width:40px;height:27px;--hl:#111214}
 .foot__tag{margin:10px 0 0;max-width:42ch;line-height:1.5}
 .foot nav{display:flex;gap:22px;flex-wrap:wrap;padding-top:6px}
 .foot a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
 .foot a:hover{border-color:#fff}
+.foot a.foot__logo{border-bottom:0}
 .foot__legal{grid-column:1/-1;font-size:12px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.12);padding-top:18px;margin:8px 0 0}
 .foot p{margin:0}
 @media (max-width:640px){.foot__in{grid-template-columns:1fr}}
