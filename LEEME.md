@@ -18,10 +18,10 @@ Sitio estático (HTML + CSS + JavaScript, sin dependencias ni build) para vender
 
 ## Antes de publicar (rellenar)
 
-1. `js/config.js`: `nombre` (hoy "Estudio Lang" es un supuesto), `whatsapp`, `email`, `instagram`, nombres de la diseñadora y del fotógrafo.
+1. `js/config.js`: `whatsapp`, `email`, `instagram`, nombres de la diseñadora y del fotógrafo. El nombre comercial es **Blind** (logo: tres lamas rosa, azul y verde, los colores del cruce diseño · informática · datos).
 2. `index.html`: el `<title>`, la `meta description` y el pie con razón social, RUT y dirección.
 3. `privacidad.html`: responsable y domicilio.
-4. Si cambias precios en la planilla, cámbialos también en `js/config.js` (bloques `bases`, `fijos`, `extras`, `mantencion`).
+4. Precios: en `js/config.js` cada ítem tiene `precio` (con IA, la mitad) y `precioSinIA` (el de la planilla). El cotizador muestra ambos y el ahorro. Fotografía, dominio y mantención no bajan. Si cambias la planilla, actualiza los dos valores.
 
 ## Cómo verlo en el computador
 
@@ -49,6 +49,7 @@ Cloudflare Pages → conectar el repositorio `Langab/estudio-web` sin comando de
 
 ## Notas de diseño
 
-- Lenguaje visual: fondos blanco y gris claro, tipografía Geist (con SF Pro como respaldo en dispositivos Apple), botones tipo píldora, animaciones suaves y `prefers-reduced-motion` respetado.
+- Lenguaje visual: fondos blanco y gris claro, tipografía Geist (con SF Pro como respaldo en dispositivos Apple), botones tipo píldora, animaciones suaves y `prefers-reduced-motion` respetado. Paleta de acento: rosa (diseño), azul (informática) y verde (datos), los tres colores del cruce, presentes en el logo, la línea bajo cada título, los íconos y las etapas.
+- El computador sigue al mouse en todo el hero, flota solo, se arrastra en el celular, tiene brillo en pantalla y reacciona a los chips. Flechas del teclado cambian de rubro cuando la pantalla tiene el foco.
 - El computador del hero se dibuja con CSS (sin imágenes). El mini sitio de la pantalla usa unidades de contenedor (`cqw`), así que escala solo.
 - Las marcas del computador (Luma Joyas, Greda Taller, Casa Lino, Estudio Pulso, Café Ladera) son de ejemplo, no clientes.

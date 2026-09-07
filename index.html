@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Estudio Lang · Sitios web completos para marcas que viven en Instagram</title>
-  <meta name="description" content="Web, identidad visual, fotos, pagos y mantención para emprendimientos en Santiago. Todo a tu nombre, probado antes de publicar. Cotiza en 2 minutos.">
+  <title>Blind · Sitios web completos, potenciados con IA</title>
+  <meta name="description" content="Blind: web, identidad visual, fotos, pagos y mantención para emprendimientos en Santiago. Potenciado con IA para costar la mitad. Todo a tu nombre. Cotiza en 2 minutos.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Tu marca, en su propio lugar.">
-  <meta property="og:description" content="Sitios web completos para emprendimientos: web + identidad + fotos + pagos + mantención. Cotiza en 2 minutos.">
+  <meta property="og:description" content="Sitios web completos para emprendimientos, potenciados con IA: web + identidad + fotos + pagos + mantención a la mitad del precio. Cotiza en 2 minutos.">
   <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d1d1f'/%3E%3Ccircle cx='32' cy='32' r='12' fill='%230071e3'/%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='%231d1d1f'/%3E%3Crect x='7' y='8' width='14' height='2.6' rx='1.3' fill='%23ff5c8a'/%3E%3Crect x='7' y='12.7' width='10' height='2.6' rx='1.3' fill='%233d8bff'/%3E%3Crect x='7' y='17.4' width='6' height='2.6' rx='1.3' fill='%2334c26a'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@500;600&family=Cormorant+Garamond:wght@500&family=Nunito:wght@800&family=Archivo+Black&family=DM+Serif+Display:ital@1&family=Zilla+Slab:wght@600&display=swap">
@@ -20,7 +20,7 @@
 
 <header class="nav">
   <div class="nav__in wrap">
-    <a class="nav__logo" href="#inicio" data-cfg="nombre">Estudio Lang</a>
+    <a class="nav__logo" href="#inicio"><svg class="logo" viewBox="0 0 28 28" width="24" height="24" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#1d1d1f"/><rect x="7" y="8" width="14" height="2.6" rx="1.3" fill="#ff5c8a"/><rect x="7" y="12.7" width="10" height="2.6" rx="1.3" fill="#3d8bff"/><rect x="7" y="17.4" width="6" height="2.6" rx="1.3" fill="#34c26a"/></svg><span data-cfg="nombre">Blind</span></a>
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav class="nav__links" id="menu" aria-label="Secciones">
       <a href="#casos">Casos</a>
@@ -28,6 +28,7 @@
       <a href="#por-que">Por qué nosotros</a>
       <a href="#cruce">Nuestra mirada</a>
       <a href="#proceso">Cómo trabajamos</a>
+      <a href="#ia">Con IA</a>
       <a href="#cotizador">Cotizador</a>
       <a class="btn btn--sm" data-wa href="#" target="_blank" rel="noopener">Hablemos</a>
     </nav>
@@ -39,9 +40,9 @@
   <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow hero__eyebrow">Sitios web para emprendimientos · Santiago</p>
+      <p class="eyebrow hero__eyebrow"><span class="badge-ia"><i></i>Potenciado con IA</span>Sitios web para emprendimientos · Santiago</p>
       <h1 class="hero__h1"><span>Tu marca,</span> <span>en su propio lugar.</span></h1>
-      <p class="lead hero__lead">Web, identidad visual, fotos, pagos y mantención. Todo a tu nombre y listo para vender, hecho por un equipo que cruza diseño, código y datos.</p>
+      <p class="lead hero__lead">Web, identidad visual, fotos, pagos y mantención. Todo a tu nombre y listo para vender, hecho por un equipo que cruza <b class="c-rosa">diseño</b>, <b class="c-azul">código</b> y <b class="c-verde">datos</b>, con inteligencia artificial haciendo la mitad del trabajo para que pagues la mitad.</p>
       <div class="hero__cta">
         <a class="btn btn--lg" href="#cotizador">Cotizar en 2 minutos</a>
         <a class="link" href="#casos">Ver casos reales</a>
@@ -50,6 +51,7 @@
 
     <div class="mac-stage" id="mac-stage" aria-label="Demostración interactiva: un sitio que cambia según el rubro">
       <div class="mac" id="mac">
+        <div class="mac__float">
         <div class="mac__lid">
           <div class="mac__bezel">
             <div class="mac__cam"></div>
@@ -78,13 +80,14 @@
         </div>
         <div class="mac__base"><span class="mac__notch"></span></div>
         <div class="mac__shadow"></div>
+        </div>
       </div>
     </div>
 
     <div class="hero__rubros wrap">
       <p class="hero__rubros-label">Elige un rubro y mira cómo cambia el sitio:</p>
       <div class="chips" id="rubros" role="group" aria-label="Rubros de ejemplo"></div>
-      <p class="hero__nota">Marcas de ejemplo. Tu sitio se diseña desde cero, para tu marca y tus clientes.</p>
+      <p class="hero__nota">Mueve el mouse sobre el computador, arrástralo en el celular o toca la pantalla para cambiar de rubro. Marcas de ejemplo: tu sitio se diseña desde cero.</p>
     </div>
 
     <div class="vivo">
@@ -297,11 +300,50 @@
         <div class="etapas__track"><span class="etapas__bar"></span></div>
         <li class="etapa reveal"><span class="etapa__n">01</span><span class="etapa__cuando">Antes de aceptar</span><h3>Kickoff</h3><p>Una reunión de 45 minutos: qué vendes, cómo vendes hoy, qué quieres lograr. Te enviamos una propuesta escrita con alcance, plazos y qué no incluye. Válida 15 días.</p></li>
         <li class="etapa reveal"><span class="etapa__n">02</span><span class="etapa__cuando">Semana 1</span><h3>Cuentas y dominio</h3><p>Creamos contigo las cuentas a tu nombre (NIC Chile, Cloudflare, Google) con verificación en dos pasos, y nos das acceso delegado.</p></li>
-        <li class="etapa reveal"><span class="etapa__n">03</span><span class="etapa__cuando">Semanas 1 a 4</span><h3>Construcción</h3><p>Vista previa desde la primera semana en una dirección de prueba. Dos rondas de revisión incluidas. Fotos e identidad visual avanzan en paralelo.</p></li>
+        <li class="etapa reveal"><span class="etapa__n">03</span><span class="etapa__cuando">Semanas 1 a 4</span><h3>Construcción con IA</h3><p>Vista previa desde la primera semana en una dirección de prueba. La IA acelera código, textos y pruebas; nosotros revisamos. Dos rondas de revisión incluidas.</p></li>
         <li class="etapa reveal"><span class="etapa__n">04</span><span class="etapa__cuando">Checklist</span><h3>Lanzamiento</h3><p>HTTPS, enlaces, formularios, celular real, velocidad, vista previa en WhatsApp, páginas legales y compra de prueba si hay pagos. Nada se publica sin tu «publica» por escrito.</p></li>
         <li class="etapa reveal"><span class="etapa__n">05</span><span class="etapa__cuando">30 días</span><h3>Entrega y garantía</h3><p>Documento de entrega, capacitación de una hora y 30 días de correcciones sin costo. El saldo se paga contra entrega.</p></li>
         <li class="etapa reveal"><span class="etapa__n">06</span><span class="etapa__cuando">Mes a mes</span><h3>Mantención</h3><p>Renovaciones, respaldos, monitoreo, cambios de contenido e informe mensual. Tu sitio no se queda pegado en el tiempo.</p></li>
       </ol>
+    </div>
+  </section>
+
+
+  <!-- ================= POTENCIADO CON IA ================= -->
+  <section class="sec ia" id="ia">
+    <div class="wrap">
+      <header class="sec__head reveal">
+        <p class="eyebrow">Potenciado con inteligencia artificial</p>
+        <h2 class="h2">La mitad del precio. <span class="grad">La misma exigencia.</span></h2>
+        <p class="lead">Usamos IA en el código, los textos, la edición de fotos y las pruebas. Lo que antes tomaba dos semanas de trabajo ahora toma una, y ese ahorro te lo traspasamos completo.</p>
+      </header>
+
+      <div class="ia__comparador reveal">
+        <div class="barra"><span class="barra__label">Agencia en Chile, sitio completo</span><span class="barra__track"><span class="barra__fill barra__fill--gris" style="--w:80%"></span></span><span class="barra__valor mono">$1,5 a 2,5 millones</span></div>
+        <div class="barra"><span class="barra__label">Blind sin IA (paquete Emprendedor)</span><span class="barra__track"><span class="barra__fill barra__fill--azul" data-ia-barra-sin></span></span><span class="barra__valor mono" data-ia-sin></span></div>
+        <div class="barra barra--destacada"><span class="barra__label">Blind con IA, hoy</span><span class="barra__track"><span class="barra__fill barra__fill--tri" data-ia-barra></span></span><span class="barra__valor mono" data-ia-con></span></div>
+        <p class="ia__fuente">Referencia de agencias: benchmark de precios en Chile, 2026, sitio de 6 a 10 páginas. Ahorro con IA sobre el mismo alcance: <strong data-ia-pct></strong>.</p>
+      </div>
+
+      <div class="ia__tiles" data-stagger>
+        <article class="tile ia__tile ia__tile--rosa reveal">
+          <span class="tile__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8L12 3ZM5 17l.9 2.1L8 20l-2.1.9L5 23l-.9-2.1L2 20l2.1-.9L5 17ZM19 15l.7 1.6 1.6.7-1.6.7L19 19.6l-.7-1.6-1.6-.7 1.6-.7L19 15Z"/></svg></span>
+          <h3>Textos e imágenes.</h3>
+          <p>Borradores de textos a partir de tu entrevista, retoque y recorte de fotos asistidos y optimización automática de pesos. Tú apruebas cada palabra y cada foto.</p>
+        </article>
+        <article class="tile ia__tile ia__tile--azul reveal">
+          <span class="tile__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 3 12l5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></span>
+          <h3>Código y pruebas.</h3>
+          <p>La IA escribe y revisa código bajo nuestra dirección y corre las pruebas de enlaces, formularios y velocidad. Cada línea pasa por revisión humana y por la checklist de lanzamiento.</p>
+        </article>
+        <article class="tile ia__tile ia__tile--verde reveal">
+          <span class="tile__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg></span>
+          <h3>Datos que sí se leen.</h3>
+          <p>Informes mensuales de visitas, formularios y ventas resumidos por IA en una página, con recomendaciones concretas. Menos horas de análisis, más decisiones.</p>
+        </article>
+      </div>
+
+      <p class="ia__nota">Lo que no cambia: el criterio de diseño, la sesión de fotos, la reunión contigo, la garantía de 30 días y que todo quede a tu nombre. La IA acelera; no decide. <a class="link" href="#cotizador">Ver los precios con el ahorro aplicado</a></p>
     </div>
   </section>
 
@@ -311,7 +353,7 @@
       <header class="sec__head reveal">
         <p class="eyebrow">Cotizador</p>
         <h2 class="h2">Arma tu sitio.</h2>
-        <p class="lead">Elige una base, agrega lo que necesitas y mira el estimado al instante. Son los mismos precios que usamos en la propuesta.</p>
+        <p class="lead">Elige una base, agrega lo que necesitas y mira el estimado al instante. Son los mismos precios que usamos en la propuesta, ya con el ahorro de la IA aplicado.</p>
       </header>
 
       <div class="config__grid">
@@ -355,6 +397,7 @@
           <p class="res__doc" id="res-doc"></p>
           <dl class="res__lineas"><div class="res__item"><dt>Base</dt><dd id="res-base"></dd></div></dl>
           <ul class="res__extras" id="res-extras"></ul>
+          <div class="res__ia"><div class="res__item"><span>Sin IA habría costado</span><span id="res-sinia"></span></div><div class="res__item res__item--ahorro"><span>Tu ahorro con IA</span><span id="res-ahorro"></span></div></div>
           <div class="res__item" id="res-iva" hidden><span>IVA 19 %</span><span id="res-iva-monto"></span></div>
           <div class="res__split">
             <div><span>Anticipo al aceptar</span><strong class="mono" id="res-anticipo"></strong></div>
@@ -381,6 +424,7 @@
         <h2 class="h2">Lo que nos preguntan antes de empezar.</h2>
       </header>
       <div class="faq" data-stagger>
+        <details class="faq__item reveal"><summary>¿Por qué cuesta la mitad?</summary><p>Porque trabajamos con inteligencia artificial en el código, los textos, la edición y las pruebas: menos horas por el mismo estándar, y ese ahorro te lo traspasamos. Lo que no se acelera con IA, como la sesión de fotos o el dominio, mantiene su precio. Todo pasa igual por revisión humana y por la checklist de lanzamiento.</p></details>
         <details class="faq__item reveal"><summary>¿Necesito tener inicio de actividades?</summary><p>Para un sitio informativo, no. Para cobrar con tarjeta, sí: desde octubre de 2025 las pasarelas exigen inicio de actividades en el SII y boleta electrónica. Te orientamos y, si hace falta, te decimos exactamente qué preguntarle a tu contador.</p></details>
         <details class="faq__item reveal"><summary>¿Cuánto demora?</summary><p>Una Vitrina, unas 3 semanas. Con identidad visual y fotos, entre 5 y 8 semanas. Los plazos corren desde el pago del anticipo y la entrega de contenidos (textos, precios, fotos o la fecha de la sesión).</p></details>
         <details class="faq__item reveal"><summary>¿Qué pasa si dejamos de trabajar juntos?</summary><p>Nada se rompe. Dominio, cuentas, código y diseño son tuyos. Te entregamos un archivo final con todo, quitamos nuestros accesos y dejamos por escrito cómo renovar el dominio.</p></details>
@@ -421,18 +465,27 @@
   <div class="modal__in">
     <button class="modal__cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
     <header class="modal__head">
-      <p class="eyebrow">Caso · Sala Crisol · salacrisol.cl</p>
+      <p class="eyebrow">Caso · Sala Crisol</p>
       <h2 class="h2" id="crisol-titulo">Cómo lo construimos juntos.</h2>
       <p class="lead">Una sala de artes y movimiento en Ñuñoa, seis talleres, dos fundadoras y todo viviendo en Instagram.</p>
     </header>
-    <img class="modal__img" src="img/casos/salacrisol-desktop.jpg" alt="Portada de salacrisol.cl" loading="lazy" width="1440" height="900">
-    <ol class="relato">
-      <li class="relato__paso"><span class="relato__k">Punto de partida</span><h3>Seis talleres, 25 m² y todo en Instagram.</h3><p>Consuelo y Esperanza tenían la sala, seis talleres con distintas profes, tertulias de cine y domingos populares. Los horarios vivían en historias, las inscripciones llegaban por mensaje directo y los cupos se llevaban de memoria.</p></li>
-      <li class="relato__paso"><span class="relato__k">Kickoff</span><h3>Una conversación de 45 minutos.</h3><p>Qué venden (clases mensuales, arriendo de la sala, entradas a tertulias), cómo cierran hoy (WhatsApp), qué las cansa (repetir horarios y precios) y qué quieren: que alguien llegue a su primera clase sin preguntar diez veces.</p></li>
-      <li class="relato__paso"><span class="relato__k">Decisiones juntas</span><h3>El crisol como concepto.</h3><p>El nombre dio el concepto: el recipiente donde las cosas se funden. De ahí salió una paleta cálida, banderines, fotos tipo polaroid de las clases y una tipografía con carácter. Definimos que cada taller tuviera su ficha (profe, nivel, días) y que el botón principal fuera WhatsApp con el mensaje ya escrito.</p></li>
-      <li class="relato__paso"><span class="relato__k">Construcción</span><h3>Vista previa desde la primera semana.</h3><p>Fichas por taller, horario semanal como grilla, sección de tertulias con las ediciones pasadas y arriendo de la sala con precios claros. Las inscripciones llegan a una planilla de Google de la sala, con un panel privado para marcar pagos y asistencia. Ellas revisaban en una dirección de prueba y pedían cambios.</p></li>
-      <li class="relato__paso"><span class="relato__k">Puesta en marcha</span><h3>A su nombre y probado.</h3><p>Dominio .cl inscrito a nombre de la sala, DNS en Cloudflare, certificado HTTPS, enlaces de WhatsApp probados uno por uno, vista previa al compartir por Instagram y una capacitación para que cambien horarios y precios sin tocar código.</p></li>
-      <li class="relato__paso"><span class="relato__k">Resultado</span><h3>Un lugar propio que responde antes del DM.</h3><p>La historia destacada apunta a salacrisol.cl. Quien llega ve clases, horarios, precios, cómo llegar y cómo inscribirse, y escribe solo para confirmar.</p></li>
+    <div class="modal__hero">
+      <span class="frame frame--desk"><img src="img/casos/salacrisol-desktop.jpg" alt="Portada de salacrisol.cl en escritorio" loading="lazy" width="1440" height="900"></span>
+      <span class="frame frame--phone"><img src="img/casos/salacrisol-mobile.jpg" alt="" loading="lazy" width="390" height="844"></span>
+    </div>
+    <dl class="ficha">
+      <div><dt>Rubro</dt><dd>Sala de danza y movimiento · Ñuñoa</dd></div>
+      <div><dt>Antes</dt><dd>Horarios en historias, inscripciones por DM y cupos de memoria.</dd></div>
+      <div><dt>Después</dt><dd>salacrisol.cl con fichas por clase, horario semanal e inscripción directa a su planilla.</dd></div>
+      <div><dt>Entregado</dt><dd class="chips-mini"><span>Sitio completo</span><span>Inscripciones + panel</span><span>Dominio .cl a su nombre</span><span>WhatsApp con mensaje listo</span><span>Capacitación</span></dd></div>
+    </dl>
+    <ol class="pasos-caso">
+      <li class="paso-caso"><span class="paso-caso__n">01</span><span class="paso-caso__k">Punto de partida</span><h3>Seis talleres, 25 m² y todo en Instagram.</h3><p>Consuelo y Esperanza tenían la sala, seis talleres con distintas profes, tertulias de cine y domingos populares. Los horarios vivían en historias, las inscripciones llegaban por mensaje directo y los cupos se llevaban de memoria.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">02</span><span class="paso-caso__k">Kickoff</span><h3>Una conversación de 45 minutos.</h3><p>Qué venden (clases mensuales, arriendo de la sala, entradas a tertulias), cómo cierran hoy (WhatsApp), qué las cansa (repetir horarios y precios) y qué quieren: que alguien llegue a su primera clase sin preguntar diez veces.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">03</span><span class="paso-caso__k">Decisiones juntas</span><h3>El crisol como concepto.</h3><p>El nombre dio el concepto: el recipiente donde las cosas se funden. De ahí salió una paleta cálida, banderines, fotos tipo polaroid y una tipografía con carácter. Cada taller con su ficha (profe, nivel, días) y el botón principal a WhatsApp con el mensaje ya escrito.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">04</span><span class="paso-caso__k">Construcción</span><h3>Vista previa desde la primera semana.</h3><p>Fichas por taller, horario semanal como grilla, sección de tertulias y arriendo de la sala con precios claros. Las inscripciones llegan a una planilla de Google de la sala, con un panel privado para marcar pagos y asistencia. Ellas revisaban en una dirección de prueba y pedían cambios.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">05</span><span class="paso-caso__k">Puesta en marcha</span><h3>A su nombre y probado.</h3><p>Dominio .cl inscrito a nombre de la sala, DNS en Cloudflare, HTTPS, enlaces de WhatsApp probados uno por uno, vista previa al compartir por Instagram y una capacitación para que cambien horarios y precios sin tocar código.</p></li>
+      <li class="paso-caso paso-caso--resultado"><span class="paso-caso__n">06</span><span class="paso-caso__k">Resultado</span><h3>Un lugar propio que responde antes del DM.</h3><p>La historia destacada apunta a salacrisol.cl. Quien llega ve clases, horarios, precios, cómo llegar y cómo inscribirse, y escribe solo para confirmar.</p><a class="link" href="https://salacrisol.cl" target="_blank" rel="noopener">Ver salacrisol.cl en vivo</a></li>
     </ol>
     <div class="modal__adapta">
       <h3>Qué de esto sirve para tu marca</h3>
@@ -447,18 +500,27 @@
   <div class="modal__in">
     <button class="modal__cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
     <header class="modal__head">
-      <p class="eyebrow">Caso · Entre Comillas · entrecomillas.cl</p>
+      <p class="eyebrow">Caso · Entre Comillas</p>
       <h2 class="h2" id="ec-titulo">Cómo lo construimos juntos.</h2>
       <p class="lead">Una consultora de comunicación interna con 30 años de historia, marcas líderes en su portafolio y una web que no lo contaba.</p>
     </header>
-    <img class="modal__img" src="img/casos/entrecomillas-desktop.jpg" alt="Portada de entrecomillas.cl" loading="lazy" width="1440" height="900">
-    <ol class="relato">
-      <li class="relato__paso"><span class="relato__k">Punto de partida</span><h3>Treinta años de trayectoria en un PDF.</h3><p>Un sitio WordPress desactualizado, sin presencia activa en LinkedIn y con el material comercial encerrado en una presentación que se compartía uno a uno. La trayectoria existía; faltaba que el mercado la viera.</p></li>
-      <li class="relato__paso"><span class="relato__k">Kickoff</span><h3>Primero el negocio, después la web.</h3><p>Antes de diseñar, una asesoría comercial: modelo de negocio, clientes históricos, competencia chilena e internacional y el mensaje que ordena todo: «comunicar para involucrar».</p></li>
-      <li class="relato__paso"><span class="relato__k">Decisiones juntas</span><h3>Mantener lo que funciona.</h3><p>Se conservó el dominio (antigüedad y correo) y la plataforma WordPress. La identidad existente, violeta e isotipo de comillas, pasó a ser el hilo de todo el sitio. Definimos la estructura por páginas mirando referentes del rubro y pedimos testimonios reales a ex contrapartes.</p></li>
-      <li class="relato__paso"><span class="relato__k">Construcción</span><h3>Seis páginas y casos que se leen en un minuto.</h3><p>Inicio, nosotros, qué hacemos, metodología, clientes y contacto. Casos de éxito en formato reto, solución y resultado; muro de marcas; testimonios con nombre y cargo; animaciones suaves al hacer scroll e imágenes optimizadas: la portada bajó de un megabyte a menos de la mitad.</p></li>
-      <li class="relato__paso"><span class="relato__k">Puesta en marcha</span><h3>Publicado en su propia plataforma.</h3><p>El sitio se montó en el WordPress que ya tenían, sin mover el dominio ni el correo, con revisión en escritorio y celular.</p></li>
-      <li class="relato__paso"><span class="relato__k">Resultado</span><h3>Una web que muestra 30 años y pide conversar.</h3><p>Cada página termina en una invitación concreta: agendar una conversación. La trayectoria dejó de estar en un PDF y pasó a estar en Google.</p></li>
+    <div class="modal__hero">
+      <span class="frame frame--desk"><img src="img/casos/entrecomillas-desktop.jpg" alt="Portada de entrecomillas.cl en escritorio" loading="lazy" width="1440" height="900"></span>
+      <span class="frame frame--phone"><img src="img/casos/entrecomillas-mobile.jpg" alt="" loading="lazy" width="390" height="844"></span>
+    </div>
+    <dl class="ficha">
+      <div><dt>Rubro</dt><dd>Consultora de comunicación interna · 30 años</dd></div>
+      <div><dt>Antes</dt><dd>WordPress desactualizado, sin LinkedIn y el material comercial en un PDF.</dd></div>
+      <div><dt>Después</dt><dd>entrecomillas.cl con seis páginas, casos de éxito, testimonios reales y un llamado claro a conversar.</dd></div>
+      <div><dt>Entregado</dt><dd class="chips-mini"><span>Asesoría comercial</span><span>Sitio de 6 páginas</span><span>Casos y testimonios</span><span>Imágenes optimizadas</span><span>Montaje en su WordPress</span></dd></div>
+    </dl>
+    <ol class="pasos-caso">
+      <li class="paso-caso"><span class="paso-caso__n">01</span><span class="paso-caso__k">Punto de partida</span><h3>Treinta años de trayectoria en un PDF.</h3><p>Un sitio WordPress desactualizado, sin presencia activa en LinkedIn y con el material comercial encerrado en una presentación que se compartía uno a uno. La trayectoria existía; faltaba que el mercado la viera.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">02</span><span class="paso-caso__k">Kickoff</span><h3>Primero el negocio, después la web.</h3><p>Antes de diseñar, una asesoría comercial: modelo de negocio, clientes históricos, competencia chilena e internacional y el mensaje que ordena todo: «comunicar para involucrar».</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">03</span><span class="paso-caso__k">Decisiones juntas</span><h3>Mantener lo que funciona.</h3><p>Se conservó el dominio (antigüedad y correo) y la plataforma WordPress. La identidad existente, violeta e isotipo de comillas, pasó a ser el hilo de todo el sitio. Estructura por páginas mirando referentes del rubro y testimonios reales pedidos a ex contrapartes.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">04</span><span class="paso-caso__k">Construcción</span><h3>Seis páginas y casos que se leen en un minuto.</h3><p>Inicio, nosotros, qué hacemos, metodología, clientes y contacto. Casos en formato reto, solución y resultado; muro de marcas; testimonios con nombre y cargo; animaciones suaves e imágenes optimizadas: la portada bajó de un megabyte a menos de la mitad.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">05</span><span class="paso-caso__k">Puesta en marcha</span><h3>Publicado en su propia plataforma.</h3><p>El sitio se montó en el WordPress que ya tenían, sin mover el dominio ni el correo, con revisión en escritorio y celular.</p></li>
+      <li class="paso-caso paso-caso--resultado"><span class="paso-caso__n">06</span><span class="paso-caso__k">Resultado</span><h3>Una web que muestra 30 años y pide conversar.</h3><p>Cada página termina en una invitación concreta: agendar una conversación. La trayectoria dejó de estar en un PDF y pasó a estar en Google.</p><a class="link" href="https://entrecomillas.cl" target="_blank" rel="noopener">Ver entrecomillas.cl en vivo</a></li>
     </ol>
     <div class="modal__adapta">
       <h3>Qué de esto sirve para tu marca</h3>
@@ -468,24 +530,32 @@
   </div>
 </dialog>
 
-
 <!-- ================= MODAL · INHÓSPITA JOYAS ================= -->
 <dialog class="modal" id="caso-inhospita" aria-labelledby="inh-titulo">
   <div class="modal__in">
     <button class="modal__cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
     <header class="modal__head">
-      <p class="eyebrow">Caso · Inhóspita Joyas · inhospitajoyas.com</p>
+      <p class="eyebrow">Caso · Inhóspita Joyas</p>
       <h2 class="h2" id="inh-titulo">Cómo hicimos las fotos.</h2>
       <p class="lead">Joyería de autor en plata 980 y grillz, con una identidad oscura y orgánica que las fotos tenían que respetar.</p>
     </header>
-    <img class="modal__img" src="img/casos/inhospita-producto.jpg" alt="Ficha de producto en inhospitajoyas.com con la foto del anillo Bésame Mucho" loading="lazy" width="1440" height="900">
-    <ol class="relato">
-      <li class="relato__paso"><span class="relato__k">Punto de partida</span><h3>Piezas pequeñas, brillantes y llenas de detalle.</h3><p>Anillos con texturas, piedras y formas orgánicas. En una foto de celular el metal se ve plano, la piedra se apaga y el detalle que justifica el precio desaparece.</p></li>
-      <li class="relato__paso"><span class="relato__k">Definir la línea</span><h3>Negro, plata y reflejo.</h3><p>La marca es oscura y brillante, así que las fotos también: superficie negra con reflejo, luz dura que enciende los brillos del metal y un encuadre igual para todas las piezas. Esa decisión se toma antes de la sesión, mirando la identidad completa.</p></li>
-      <li class="relato__paso"><span class="relato__k">La sesión</span><h3>Cada pieza, con la misma luz.</h3><p>Fotografía de producto de cerca, con la misma distancia y el mismo fondo para toda la colección. Así las fichas del catálogo dialogan entre sí y el sitio se siente ordenado.</p></li>
-      <li class="relato__paso"><span class="relato__k">Edición</span><h3>Limpias, consistentes y livianas.</h3><p>Corrección de color, limpieza de polvo y rayas, negro parejo en todas las fotos y exportación en dos formatos: liviano para la web y recortado para Instagram.</p></li>
-      <li class="relato__paso"><span class="relato__k">Montaje</span><h3>En las fichas, la portada y las categorías.</h3><p>Cada producto con su foto principal y sus vistas; las categorías con una pieza representativa; la portada con la colección. Todo con nombres de archivo y pesos que ayudan a que la página cargue rápido.</p></li>
-      <li class="relato__paso"><span class="relato__k">Resultado</span><h3>Un catálogo que se ve como una colección.</h3><p>Las fotos que hoy vende Inhóspita Joyas en inhospitajoyas.com salieron de este proceso.</p></li>
+    <div class="modal__hero">
+      <span class="frame frame--desk"><img src="img/casos/inhospita-producto.jpg" alt="Ficha de producto en inhospitajoyas.com con la foto del anillo Bésame Mucho" loading="lazy" width="1440" height="900"></span>
+      <span class="frame frame--phone"><img src="img/casos/inhospita-mobile.jpg" alt="" loading="lazy" width="390" height="844"></span>
+    </div>
+    <dl class="ficha">
+      <div><dt>Rubro</dt><dd>Joyería de autor y grillz · Santiago y Valparaíso</dd></div>
+      <div><dt>Antes</dt><dd>Piezas con piedras y texturas que en una foto de celular se perdían.</dd></div>
+      <div><dt>Después</dt><dd>Catálogo con fotos de estudio, plata sobre negro con reflejo, iguales en toda la colección.</dd></div>
+      <div><dt>Entregado</dt><dd class="chips-mini"><span>Sesión de producto</span><span>Edición con criterio único</span><span>Fotos para web e Instagram</span><span>Montaje en el catálogo</span></dd></div>
+    </dl>
+    <ol class="pasos-caso">
+      <li class="paso-caso"><span class="paso-caso__n">01</span><span class="paso-caso__k">Punto de partida</span><h3>Piezas pequeñas, brillantes y llenas de detalle.</h3><p>Anillos con texturas, piedras y formas orgánicas. En una foto de celular el metal se ve plano, la piedra se apaga y el detalle que justifica el precio desaparece.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">02</span><span class="paso-caso__k">Definir la línea</span><h3>Negro, plata y reflejo.</h3><p>La marca es oscura y brillante, así que las fotos también: superficie negra con reflejo, luz dura que enciende los brillos del metal y un encuadre igual para todas las piezas. Esa decisión se toma antes de la sesión, mirando la identidad completa.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">03</span><span class="paso-caso__k">La sesión</span><h3>Cada pieza, con la misma luz.</h3><p>Fotografía de producto de cerca, con la misma distancia y el mismo fondo para toda la colección. Así las fichas del catálogo dialogan entre sí y el sitio se siente ordenado.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">04</span><span class="paso-caso__k">Edición</span><h3>Limpias, consistentes y livianas.</h3><p>Corrección de color, limpieza de polvo y rayas, negro parejo en todas las fotos y exportación en dos formatos: liviano para la web y recortado para Instagram.</p></li>
+      <li class="paso-caso"><span class="paso-caso__n">05</span><span class="paso-caso__k">Montaje</span><h3>En las fichas, la portada y las categorías.</h3><p>Cada producto con su foto principal y sus vistas; las categorías con una pieza representativa; la portada con la colección. Nombres de archivo y pesos que ayudan a que la página cargue rápido.</p></li>
+      <li class="paso-caso paso-caso--resultado"><span class="paso-caso__n">06</span><span class="paso-caso__k">Resultado</span><h3>Un catálogo que se ve como una colección.</h3><p>Las fotos que hoy vende Inhóspita Joyas en inhospitajoyas.com salieron de este proceso.</p><a class="link" href="https://inhospitajoyas.com" target="_blank" rel="noopener">Ver inhospitajoyas.com en vivo</a></li>
     </ol>
     <div class="modal__adapta">
       <h3>Qué de esto sirve para tu marca</h3>

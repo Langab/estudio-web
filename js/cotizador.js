@@ -26,11 +26,18 @@
   const basePorId = Object.fromEntries(S.bases.map((b) => [b.id, b]));
   const mantPorCodigo = Object.fromEntries(S.mantencion.map((m) => [m.codigo, m]));
   const fijosTotal = S.fijos.reduce((a, f) => a + f.precio, 0);
+  const sinIA = (it) => (it.precioSinIA !== undefined ? it.precioSinIA : it.precio);
+  const fijosSinIA = S.fijos.reduce((a, f) => a + sinIA(f), 0);
+  const redondear = (n) => Math.ceil(n / S.tarifas.redondeo) * S.tarifas.redondeo;
+  function precioPaquete(b, tradicional) {
+    const ext = b.incluye.reduce((a, c) => a + (tradicional ? sinIA(extraPorCodigo[c]) : extraPorCodigo[c].precio), 0);
+    return redondear((tradicional ? b.precioSinIA : b.precio) + (tradicional ? fijosSinIA : fijosTotal) + ext);
+  }
 
   /* ---------- Cálculo ---------- */
   function calcular() {
     const base = basePorId[estado.base];
-    let extras = 0;
+    let extras = 0, extrasSinIA = 0;
     const lineas = [];
     let semanas = base.semanas;
     let hayFoto = false;
@@ -42,22 +49,25 @@
       if (cant <= 0) return;
       const sub = e.precio * cant;
       extras += sub;
+      extrasSinIA += sinIA(e) * cant;
       lineas.push({ codigo: e.codigo, nombre: e.nombre + (cant > 1 ? ` × ${cant}` : ""), monto: sub });
       if (e.codigo === "D1") semanas += 1;
       if (e.foto) hayFoto = true;
     });
     if (hayFoto) semanas += 1;
 
-    const bruto = base.precio + fijosTotal + extras;
-    const neto = Math.ceil(bruto / S.tarifas.redondeo) * S.tarifas.redondeo;
+    const neto = redondear(base.precio + fijosTotal + extras);
     const iva = estado.factura ? neto * S.tarifas.iva : 0;
     const total = neto + iva;
+    const netoSinIA = redondear(base.precioSinIA + fijosSinIA + extrasSinIA);
+    const totalSinIA = netoSinIA + (estado.factura ? netoSinIA * S.tarifas.iva : 0);
     const anticipo = total * S.tarifas.anticipo;
     const mant = mantPorCodigo[estado.mantencion];
     const mantMes = mant ? mant.precio * (estado.factura ? 1 + S.tarifas.iva : 1) : 0;
 
     return {
       base, lineas, extras, neto, iva, total, anticipo, saldo: total - anticipo,
+      totalSinIA, ahorro: totalSinIA - total,
       mant, mantMes,
       plazo: semanas <= 3 ? `${semanas} semanas` : `${semanas - 1} a ${semanas + (estado.base === "tienda" ? 1 : 0)} semanas`
     };
@@ -101,6 +111,8 @@
         ul.appendChild(li);
       });
     }
+    $("#res-sinia").textContent = fmtCLP(r.totalSinIA);
+    $("#res-ahorro").textContent = "−" + fmtCLP(r.ahorro);
     $("#res-iva").hidden = !estado.factura;
     $("#res-iva-monto").textContent = fmtCLP(r.iva);
     $("#res-anticipo").textContent = fmtCLP(r.anticipo);
@@ -128,7 +140,7 @@
     if (estado.rubro) L.push(`Rubro: ${estado.rubro}`);
     L.push(`Base: ${r.base.nombre}`);
     if (r.lineas.length) L.push(`Extras: ${r.lineas.map((l) => l.nombre).join(", ")}`);
-    L.push(`Total estimado: ${fmtCLP(r.total)} (${estado.factura ? "con IVA" : "boleta de honorarios"})`);
+    L.push(`Total estimado: ${fmtCLP(r.total)} (${estado.factura ? "con IVA" : "boleta de honorarios"}), ya con el precio potenciado con IA (sin IA sería ${fmtCLP(r.totalSinIA)})`);
     L.push(`Anticipo ${fmtCLP(r.anticipo)} · saldo ${fmtCLP(r.saldo)}`);
     if (r.mant) L.push(`Mantención: plan ${r.mant.nombre}, ${fmtCLP(r.mantMes)} al mes`);
     L.push(`Plazo estimado: ${r.plazo}`);
@@ -144,7 +156,7 @@
     // Bases
     const bases = $("#cfg-bases");
     S.bases.forEach((b) => {
-      const precioPaquete = Math.ceil((b.precio + fijosTotal + b.incluye.reduce((a, c) => a + extraPorCodigo[c].precio, 0)) / S.tarifas.redondeo) * S.tarifas.redondeo;
+      const conIA = precioPaquete(b, false), tradicional = precioPaquete(b, true);
       const card = document.createElement("button");
       card.type = "button";
       card.className = "base" + (b.destacado ? " base--destacada" : "");
@@ -155,7 +167,9 @@
         <span class="base__nombre">${b.nombre}</span>
         <span class="base__para">${b.para}</span>
         <ul class="base__trae">${b.trae.map((t) => `<li>${t}</li>`).join("")}</ul>
-        <span class="base__precio"><span class="mono">${fmtCLP(precioPaquete)}</span><small>${b.incluye.length ? "con marca, fotos y funciones incluidas" : "con dominio, puesta en marcha y SEO incluidos"}</small></span>`;
+        <span class="base__precio">
+          <span class="base__sinia"><s>Sin IA ${fmtCLP(tradicional)}</s><em>−${Math.round((1 - conIA / tradicional) * 100)} % con IA</em></span>
+          <span class="mono">${fmtCLP(conIA)}</span><small>${b.incluye.length ? "con marca, fotos y funciones incluidas" : "con dominio, puesta en marcha y SEO incluidos"}</small></span>`;
       card.addEventListener("click", () => elegirBase(b.id));
       bases.appendChild(card);
     });
@@ -222,6 +236,17 @@
     sin.innerHTML = `<span class="plan__nombre">Después decido</span><span class="plan__para">Puedes sumar un plan cuando el sitio esté en vivo. Recomendamos 6 meses mínimo.</span>`;
     sin.addEventListener("click", () => { estado.mantencion = ""; render(); });
     mant.appendChild(sin);
+
+    // Sección "Potenciado con IA": precios de referencia del paquete Emprendedor
+    const emp = basePorId.emprendedor;
+    if (emp) {
+      const conIA = precioPaquete(emp, false), trad = precioPaquete(emp, true);
+      $$("[data-ia-con]").forEach((el) => (el.textContent = fmtCLP(conIA)));
+      $$("[data-ia-sin]").forEach((el) => (el.textContent = fmtCLP(trad)));
+      $$("[data-ia-pct]").forEach((el) => (el.textContent = Math.round((1 - conIA / trad) * 100) + " %"));
+      $$("[data-ia-barra]").forEach((el) => el.style.setProperty("--w", Math.round((conIA / 2500000) * 100) + "%"));
+      $$("[data-ia-barra-sin]").forEach((el) => el.style.setProperty("--w", Math.round((trad / 2500000) * 100) + "%"));
+    }
 
     // Fijos (lista informativa)
     $("#cfg-fijos").innerHTML = S.fijos.map((f) => `<li>${f.nombre}</li>`).join("");

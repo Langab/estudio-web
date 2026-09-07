@@ -6,13 +6,13 @@
 
 window.SITIO = {
   // ---------- Identidad ----------
-  nombre: "Estudio Lang",                 // [Supuesto] nombre comercial. Cámbialo.
+  nombre: "Blind",                        // nombre comercial
   ciudad: "Santiago de Chile",
-  claim: "Sitios web completos para marcas que hoy viven en Instagram.",
+  claim: "Sitios web completos para marcas que hoy viven en Instagram. Potenciados con IA.",
 
   // ---------- Contacto ----------
   whatsapp: "56963095562",                // solo dígitos, con código de país (sin +)
-  whatsappSaludo: "Hola Benjamín, vi la página del estudio y quiero conversar sobre un sitio para mi marca.",
+  whatsappSaludo: "Hola Benjamín, vi la página de Blind y quiero conversar sobre un sitio para mi marca.",
   email: "benjalang1997@gmail.com",
   instagram: "",                          // ej: "estudio.lang" · vacío = se oculta el enlace
   linkedin: "https://www.linkedin.com/in/benjamin-lang-a78229207/",
@@ -85,30 +85,33 @@ window.SITIO = {
     }
   ],
 
-  // ---------- Tarifas (mismos códigos y precios que 02_Plantilla_Presupuestos.xlsx) ----------
+  // ---------- Tarifas ----------
+  // Mismos códigos que 02_Plantilla_Presupuestos.xlsx. "precio" = precio con IA (mitad);
+  // "precioSinIA" = precio de lista tradicional (el de la planilla). Fotografía y dominio no bajan: son costo de terceros.
   tarifas: {
     anticipo: 0.5,           // 50% al aceptar, 50% contra entrega
     iva: 0.19,               // solo si emites factura
     redondeo: 10000,         // total redondeado hacia arriba a $10.000 (como la plantilla)
-    validezDias: 15
+    validezDias: 15,
+    factorIA: 0.5            // los costos de implementación (diseño, código, puesta en marcha) van a la mitad gracias a la IA
   },
 
   // Bases (una por paquete). "incluye" = ítems que se activan por defecto al elegirla.
   bases: [
     {
-      id: "vitrina", codigo: "W2", nombre: "Vitrina", precio: 450000, semanas: 3,
+      id: "vitrina", codigo: "W2", nombre: "Vitrina", precio: 225000, precioSinIA: 450000, semanas: 2,
       para: "Para negocios que hoy solo tienen Instagram y necesitan un lugar propio con horarios, precios, mapa y WhatsApp.",
       trae: ["Portada + hasta 4 páginas", "Menú y formularios a WhatsApp", "Responsive y rápido"],
       incluye: [], mantencion: "M1"
     },
     {
-      id: "emprendedor", codigo: "W3", nombre: "Emprendedor", precio: 750000, semanas: 4, destacado: true,
+      id: "emprendedor", codigo: "W3", nombre: "Emprendedor", precio: 375000, precioSinIA: 750000, semanas: 3, destacado: true,
       para: "Para marcas que quieren verse profesionales de una vez: logo, fotos propias, web con subpáginas e inscripciones.",
       trae: ["Portada + subpáginas (6 a 10)", "Catálogo o grilla de horarios", "Contenido editable por ti"],
       incluye: ["W7", "W10", "D1", "D3", "F2"], mantencion: "M2"
     },
     {
-      id: "tienda", codigo: "W5", nombre: "Tienda", precio: 990000, semanas: 5,
+      id: "tienda", codigo: "W5", nombre: "Tienda", precio: 495000, precioSinIA: 990000, semanas: 4,
       para: "Para quienes venden productos y hoy cierran ventas por DM: catálogo, carrito, pago con tarjeta y páginas legales.",
       trae: ["Hasta 30 productos", "Carrito y checkout con pasarela", "Correo de confirmación y legales"],
       incluye: ["W8", "W10", "D1", "D3", "F1"], mantencion: "M3"
@@ -117,28 +120,28 @@ window.SITIO = {
 
   // Siempre incluidos en cualquier base (se suman al precio).
   fijos: [
-    { codigo: "P1", nombre: "Dominio .cl a tu nombre (1 año, NIC Chile)", precio: 9990 },
-    { codigo: "P2", nombre: "DNS, HTTPS y hosting sin costo mensual", precio: 45000 },
-    { codigo: "P3", nombre: "Puesta en marcha con checklist y 30 días de garantía", precio: 60000 },
-    { codigo: "P4", nombre: "Capacitación y guía para editar tu sitio", precio: 40000 },
-    { codigo: "W11", nombre: "SEO básico, ficha de Google y Search Console", precio: 80000 }
+    { codigo: "P1", nombre: "Dominio .cl a tu nombre (1 año, NIC Chile)", precio: 9990, precioSinIA: 9990 },
+    { codigo: "P2", nombre: "DNS, HTTPS y hosting sin costo mensual", precio: 22500, precioSinIA: 45000 },
+    { codigo: "P3", nombre: "Puesta en marcha con checklist y 30 días de garantía", precio: 30000, precioSinIA: 60000 },
+    { codigo: "P4", nombre: "Capacitación y guía para editar tu sitio", precio: 20000, precioSinIA: 40000 },
+    { codigo: "W11", nombre: "SEO básico, ficha de Google y Search Console", precio: 40000, precioSinIA: 80000 }
   ],
 
   // Extras (toggles). grupo: "marca" | "funciones". tipo: "toggle" | "cantidad".
   extras: [
-    { codigo: "D1", grupo: "marca", nombre: "Identidad visual", desc: "Logo en versiones, paleta y tipografías. Archivos SVG y PNG.", precio: 320000, semanas: 1 },
-    { codigo: "D2", grupo: "marca", nombre: "Manual de marca", desc: "PDF con usos correctos, redes y papelería.", precio: 180000 },
-    { codigo: "D3", grupo: "marca", nombre: "Plantillas para Instagram", desc: "5 plantillas editables en Canva: productos, horarios, historias.", precio: 90000 },
-    { codigo: "D4", grupo: "marca", nombre: "Etiquetas o packaging", desc: "Diseño listo para imprenta (impresión no incluida).", precio: 120000 },
+    { codigo: "D1", grupo: "marca", nombre: "Identidad visual", desc: "Logo en versiones, paleta y tipografías. Archivos SVG y PNG.", precio: 160000, precioSinIA: 320000, semanas: 1 },
+    { codigo: "D2", grupo: "marca", nombre: "Manual de marca", desc: "PDF con usos correctos, redes y papelería.", precio: 90000, precioSinIA: 180000 },
+    { codigo: "D3", grupo: "marca", nombre: "Plantillas para Instagram", desc: "5 plantillas editables en Canva: productos, horarios, historias.", precio: 45000, precioSinIA: 90000 },
+    { codigo: "D4", grupo: "marca", nombre: "Etiquetas o packaging", desc: "Diseño listo para imprenta (impresión no incluida).", precio: 60000, precioSinIA: 120000 },
     { codigo: "F1", grupo: "marca", nombre: "Sesión de fotos de producto", desc: "Media jornada, hasta 20 productos, 40 fotos editadas.", precio: 250000, semanas: 1, foto: true },
     { codigo: "F2", grupo: "marca", nombre: "Sesión de marca o espacio", desc: "Media jornada: tu lugar, tu equipo, tu proceso. 40 fotos editadas.", precio: 250000, semanas: 1, foto: true },
     { codigo: "F3", grupo: "marca", nombre: "Jornada completa de fotos", desc: "Producto + marca, hasta 80 fotos y 3 videos cortos para reels.", precio: 450000, semanas: 1, foto: true },
-    { codigo: "W10", grupo: "funciones", nombre: "Redacción de textos", desc: "Escribimos los textos a partir de una entrevista contigo.", precio: 120000 },
-    { codigo: "W7", grupo: "funciones", nombre: "Inscripciones o pedidos a planilla + panel", desc: "Formulario conectado a tu Google Sheets y panel privado para marcar pagos.", precio: 150000 },
-    { codigo: "W8", grupo: "funciones", nombre: "Pagos con link o botón", desc: "Flow, Mercado Pago o Webpay a tu nombre, probado con compra real.", precio: 80000 },
-    { codigo: "W9", grupo: "funciones", nombre: "Pagos integrados con confirmación en servidor", desc: "Checkout completo: el pago se confirma en servidor y queda registrado.", precio: 280000 },
-    { codigo: "W4", grupo: "funciones", tipo: "cantidad", nombre: "Página adicional", desc: "Una página extra con el mismo diseño.", precio: 45000, max: 10 },
-    { codigo: "W6", grupo: "funciones", tipo: "cantidad", nombre: "Producto adicional", desc: "Ficha con fotos, descripción y precio (sobre los 30 incluidos).", precio: 5000, max: 200 }
+    { codigo: "W10", grupo: "funciones", nombre: "Redacción de textos", desc: "Escribimos los textos a partir de una entrevista contigo, con IA y revisión humana.", precio: 60000, precioSinIA: 120000 },
+    { codigo: "W7", grupo: "funciones", nombre: "Inscripciones o pedidos a planilla + panel", desc: "Formulario conectado a tu Google Sheets y panel privado para marcar pagos.", precio: 75000, precioSinIA: 150000 },
+    { codigo: "W8", grupo: "funciones", nombre: "Pagos con link o botón", desc: "Flow, Mercado Pago o Webpay a tu nombre, probado con compra real.", precio: 40000, precioSinIA: 80000 },
+    { codigo: "W9", grupo: "funciones", nombre: "Pagos integrados con confirmación en servidor", desc: "Checkout completo: el pago se confirma en servidor y queda registrado.", precio: 140000, precioSinIA: 280000 },
+    { codigo: "W4", grupo: "funciones", tipo: "cantidad", nombre: "Página adicional", desc: "Una página extra con el mismo diseño.", precio: 22500, precioSinIA: 45000, max: 10 },
+    { codigo: "W6", grupo: "funciones", tipo: "cantidad", nombre: "Producto adicional", desc: "Ficha con fotos, descripción y precio (sobre los 30 incluidos).", precio: 2500, precioSinIA: 5000, max: 200 }
   ],
 
   // Planes de mantención (mes a mes, mínimo sugerido 6 meses).

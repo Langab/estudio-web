@@ -56,17 +56,20 @@
   function computador() {
     const stage = $("#mac-stage");
     if (!stage) return;
+    const hero = stage.closest(".hero") || stage;
     const mac = $("#mac");
+    const flotante = $(".mac__float", mac);
     const mini = $("#mini");
     const chips = $("#rubros");
     let actual = 0;
     let timer = null;
+    const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
     // Chips
     S.rubros.forEach((r, i) => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "chip"; b.textContent = r.nombre; b.dataset.i = i;
-      b.addEventListener("click", () => { pintar(i); detenerCiclo(); if (window.COTIZADOR) window.COTIZADOR.setRubro(r.nombre); });
+      b.addEventListener("click", () => { pintar(i); detenerCiclo(); sacudir(); if (window.COTIZADOR) window.COTIZADOR.setRubro(r.nombre); });
       chips.appendChild(b);
     });
 
@@ -103,42 +106,87 @@
 
     function ciclo() { timer = setInterval(() => pintar((actual + 1) % S.rubros.length), 4200); }
     function detenerCiclo() { if (timer) { clearInterval(timer); timer = null; } }
+    function siguiente() { pintar((actual + 1) % S.rubros.length); detenerCiclo(); sacudir(); }
+    function anterior() { pintar((actual - 1 + S.rubros.length) % S.rubros.length); detenerCiclo(); sacudir(); }
+
+    // Pequeño impulso al cambiar de rubro
+    function sacudir() {
+      if (reduceMotion) return;
+      mac.classList.remove("is-nudge");
+      void mac.offsetWidth;
+      mac.classList.add("is-nudge");
+    }
 
     pintar(0, true);
 
     // Apertura de la tapa
     requestAnimationFrame(() => setTimeout(() => {
       mac.classList.add("is-open");
-      if (!reduceMotion) setTimeout(ciclo, 2200);
+      if (!reduceMotion) setTimeout(() => { ciclo(); stage.classList.add("is-live"); }, 2000);
     }, 350));
 
-    // Inclinación con el mouse
+    // Inclinación: sigue al mouse en todo el hero
+    const setTilt = (rx, ry) => { mac.style.setProperty("--rx", rx.toFixed(2) + "deg"); mac.style.setProperty("--ry", ry.toFixed(2) + "deg"); };
+    const setGlare = (x) => { $(".mac__screen").style.setProperty("--gx", (x * 40).toFixed(1) + "%"); };
     if (!reduceMotion && window.matchMedia("(hover:hover)").matches) {
-      stage.addEventListener("mousemove", (e) => {
+      hero.addEventListener("mousemove", (e) => {
         const r = stage.getBoundingClientRect();
-        const x = (e.clientX - r.left) / r.width - 0.5;
-        const y = (e.clientY - r.top) / r.height - 0.5;
-        mac.style.setProperty("--ry", (x * 10).toFixed(2) + "deg");
-        mac.style.setProperty("--rx", (-y * 6).toFixed(2) + "deg");
+        const x = clamp((e.clientX - (r.left + r.width / 2)) / r.width, -0.8, 0.8);
+        const y = clamp((e.clientY - (r.top + r.height / 2)) / r.height, -0.8, 0.8);
+        mac.classList.add("is-hover");
+        setTilt(-y * 12, x * 22);
+        setGlare(x);
       });
-      stage.addEventListener("mouseleave", () => { mac.style.setProperty("--ry", "0deg"); mac.style.setProperty("--rx", "0deg"); });
+      hero.addEventListener("mouseleave", () => { mac.classList.remove("is-hover"); setTilt(0, 0); setGlare(0); });
     }
 
-    // Clic en la pantalla: siguiente rubro
-    const screen = $(".mac__screen");
-    screen.addEventListener("click", () => { pintar((actual + 1) % S.rubros.length); detenerCiclo(); });
-    screen.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); screen.click(); } });
+    // Arrastrar para girar (celular y también mouse)
+    if (!reduceMotion) {
+      let arrastrando = false, x0 = 0, y0 = 0, rx0 = 0, ry0 = 0, movido = false;
+      const leer = (v) => parseFloat(mac.style.getPropertyValue(v)) || 0;
+      stage.addEventListener("pointerdown", (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        arrastrando = true; movido = false; x0 = e.clientX; y0 = e.clientY; rx0 = leer("--rx"); ry0 = leer("--ry");
+        mac.classList.add("is-drag");
+        detenerCiclo();
+      });
+      window.addEventListener("pointermove", (e) => {
+        if (!arrastrando) return;
+        const dx = e.clientX - x0, dy = e.clientY - y0;
+        if (Math.abs(dx) > 6 || Math.abs(dy) > 6) movido = true;
+        setTilt(clamp(rx0 - dy * 0.15, -18, 18), clamp(ry0 + dx * 0.25, -35, 35));
+      });
+      const soltar = () => {
+        if (!arrastrando) return;
+        arrastrando = false;
+        mac.classList.remove("is-drag");
+        if (!mac.classList.contains("is-hover")) setTilt(0, 0);
+      };
+      window.addEventListener("pointerup", soltar);
+      window.addEventListener("pointercancel", soltar);
+      // Un toque (sin arrastrar) en la pantalla cambia de rubro
+      $(".mac__screen").addEventListener("click", () => { if (!movido) siguiente(); });
+    } else {
+      $(".mac__screen").addEventListener("click", siguiente);
+    }
 
-    // Efecto al hacer scroll: se aleja suavemente
+    // Teclado
+    const screen = $(".mac__screen");
+    screen.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " " || e.key === "ArrowRight") { e.preventDefault(); siguiente(); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); anterior(); }
+    });
+
+    // Efecto al hacer scroll: se aleja e inclina suavemente
     if (!reduceMotion) {
       let ticking = false;
       const onScroll = () => {
         if (ticking) return; ticking = true;
         requestAnimationFrame(() => {
-          // Empieza a alejarse solo cuando el borde superior del computador pasa el borde de la ventana
           const r = stage.getBoundingClientRect();
           const p = Math.min(1, Math.max(0, -r.top / (r.height * 0.9)));
           stage.style.setProperty("--p", p.toFixed(3));
+          mac.style.setProperty("--sx", (p * 14).toFixed(2) + "deg");
           ticking = false;
         });
       };
