@@ -19,9 +19,9 @@ window.SITIO = {
 
   // ---------- Equipo ----------
   equipo: [
-    { nombre: "Benjamín Lang", rol: "Programación y datos",
-      desc: "Sociólogo y analista de datos con más de cinco años programando. Automatizó los pipelines de control de calidad del Censo 2024 en el INE, construye dashboards y sitios institucionales en el SLEP Santa Rosa y ha publicado investigación con métodos computacionales en el CEP. En Blind escribe el código, conecta pagos y planillas, y mide lo que pasa después.",
-      stack: ["JavaScript", "Python", "R", "SQL", "Git", "Cloudflare", "Apps Script", "Power BI"],
+    { nombre: "Benjamín Lang", rol: "Desarrollo web y datos",
+      desc: "Desarrollador web y experto en datos, con más de cinco años programando. Construye sitios y aplicaciones web de punta a punta: front-end, integraciones con pagos y planillas, paneles de administración y despliegue en Cloudflare. Viene del análisis de datos a gran escala: automatizó los pipelines de control de calidad del Censo 2024 en el INE y diseña dashboards e informes automáticos para el SLEP Santa Rosa. En Blind escribe el código, conecta pagos y planillas, y mide lo que pasa después.",
+      stack: ["JavaScript", "HTML / CSS", "Python", "SQL", "R", "Git", "Cloudflare", "Apps Script", "Power BI"],
       enlaces: [{ t: "LinkedIn", u: "https://www.linkedin.com/in/benjamin-lang-a78229207/" }, { t: "GitHub", u: "https://github.com/Langab" }] },
     { nombre: "Andrea Ortega", rol: "Diseño y fotografía",
       desc: "Diseñadora gráfica titulada en la Universidad de Valparaíso, con paso por la Universidad del País Vasco. Branding, packaging, dirección de arte y fotografía de producto: dirigió el arte y el packaging de Imanix by Braintoys y fotografió los catálogos de Inhóspita Joyas y Masa Madre Gourmet. En Blind crea tu identidad, tus plantillas para Instagram y tus fotos.",
