@@ -12,7 +12,8 @@ Sitio estático (HTML + CSS + JavaScript, sin dependencias ni build) para vender
 | `js/cotizador.js` | Motor del cotizador: base + fijos + extras → redondeo a $10.000 → anticipo/saldo, IVA opcional, mantención. Arma el mensaje de WhatsApp. |
 | `js/main.js` | Interacciones: menú, apertura del computador, cambio de rubro, reveals al hacer scroll, scrollytelling del cruce, modales. |
 | `css/estilos.css` | Todo el estilo. Tokens al inicio (`:root`). |
-| `img/casos/` | Pantallazos reales de salacrisol.cl y entrecomillas.cl (escritorio y móvil). Vuelve a capturarlos cuando esos sitios cambien. |
+| `img/casos/` | Pantallazos reales de salacrisol.cl, entrecomillas.cl e inhospitajoyas.com (escritorio y móvil). Vuelve a capturarlos cuando esos sitios cambien. |
+| `img/fotos/` | Tres fotos de producto de Inhóspita Joyas (sección "Las fotos las sacamos nosotros"). Si los derechos quedaron cedidos a la clienta, confirma con ella antes de mantenerlas o reemplázalas por otras de tu fotógrafo. |
 | `_headers` | Cabeceras de seguridad que Cloudflare Pages aplica solo. |
 
 ## Antes de publicar (rellenar)

@@ -168,6 +168,33 @@ button{font:inherit}
 .caso__acciones{display:flex;gap:24px;flex-wrap:wrap;margin-top:22px}
 @media (max-width:860px){.caso{grid-template-columns:1fr}.caso--invert .caso__media{order:0}}
 
+/* ---------- Fotografía de producto ---------- */
+.flujo{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.flujo__paso{margin:0;background:#fff;border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-tile);display:flex;flex-direction:column;transition:transform .5s var(--ease-out)}
+.flujo__paso:hover{transform:translateY(-3px)}
+.flujo__img{aspect-ratio:4/3;overflow:hidden;background:#0a0a0a}
+.flujo__img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease-out)}
+.flujo__paso:hover .flujo__img img{transform:scale(1.03)}
+.flujo__img--foto img{object-position:center 55%}
+.flujo__img--web img{object-position:center 28%}
+.flujo__paso figcaption{padding:22px 24px 26px;display:flex;flex-direction:column;gap:6px}
+.flujo__n{font-size:13px;font-weight:600;color:var(--blue)}
+.flujo__paso h3{margin:0;font-size:21px;letter-spacing:-.02em;line-height:1.2}
+.flujo__paso p{margin:0;color:var(--ink-2);font-size:15px;line-height:1.5}
+.marca-card{aspect-ratio:4/3;background:#0a0a0a;color:#e6e6e6;display:flex;flex-direction:column;justify-content:space-between;padding:22px 24px;position:relative;overflow:hidden}
+.marca-card__logo{font-family:var(--mono);letter-spacing:.2em;font-size:14px;text-transform:uppercase;color:#fff;position:relative;z-index:1}
+.marca-card__foto{position:absolute;right:-2%;top:8%;width:50%;aspect-ratio:1;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -20px rgba(0,0,0,.9)}
+.marca-card__foto img{width:100%;height:100%;object-fit:cover}
+.marca-card__swatches{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.marca-card__swatches i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(255,255,255,.28)}
+.marca-card__leyenda{font-size:12px;color:#a1a1a6;margin:0;max-width:46%;line-height:1.4}
+.fotos__caso{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,4vw,48px);align-items:center;background:#fff;border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);box-shadow:var(--shadow-tile)}
+.fotos__galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.fotos__galeria img{aspect-ratio:4/5;object-fit:cover;border-radius:14px;width:100%;background:#0a0a0a}
+.fotos__txt p{color:var(--ink-2);margin:0;line-height:1.5}
+.fotos__nota{text-align:center;color:var(--ink-2);font-size:15px;margin:28px 0 0}
+@media (max-width:900px){.flujo{grid-template-columns:1fr}.fotos__caso{grid-template-columns:1fr}}
+
 /* ---------- Bento (por qué) ---------- */
 .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .tile{background:#fff;border-radius:var(--radius-xl);padding:clamp(24px,3vw,34px);grid-column:span 2;box-shadow:var(--shadow-tile);display:flex;flex-direction:column;gap:14px;min-height:230px;transition:transform .5s var(--ease-out)}

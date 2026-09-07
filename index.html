@@ -24,6 +24,7 @@
     <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     <nav class="nav__links" id="menu" aria-label="Secciones">
       <a href="#casos">Casos</a>
+      <a href="#fotos">Fotos</a>
       <a href="#por-que">Por qué nosotros</a>
       <a href="#cruce">Nuestra mirada</a>
       <a href="#proceso">Cómo trabajamos</a>
@@ -136,6 +137,59 @@
           </div>
         </article>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ================= FOTOS ================= -->
+  <section class="sec sec--grey fotos" id="fotos">
+    <div class="wrap">
+      <header class="sec__head reveal">
+        <p class="eyebrow">Fotografía de producto</p>
+        <h2 class="h2">Las fotos las sacamos nosotros.</h2>
+        <p class="lead">Una foto de producto decide una venta en un segundo. Por eso no te pedimos que las consigas: las hacemos con nuestro fotógrafo, en la línea de tu marca, y las dejamos montadas en tu web y en tu Instagram.</p>
+      </header>
+
+      <div class="flujo" data-stagger>
+        <figure class="flujo__paso reveal">
+          <div class="flujo__img flujo__img--foto"><img src="img/fotos/inhospita-abismo.jpg" alt="Anillo Abismo de Inhóspita Joyas fotografiado en estudio sobre fondo negro con reflejo" loading="lazy" width="900" height="1125"></div>
+          <figcaption><span class="flujo__n">1 · La sesión</span><h3>Fotografiamos tus productos.</h3><p>En tu taller o en estudio. Definimos contigo fondo, luz y encuadre según lo que vendes. Aquí: plata sobre negro, con reflejo y luz dura, porque la marca es oscura y brillante.</p></figcaption>
+        </figure>
+        <figure class="flujo__paso reveal">
+          <div class="marca-card" aria-hidden="true">
+            <span class="marca-card__logo">Inhóspita Joyas</span>
+            <div class="marca-card__foto"><img src="img/fotos/inhospita-cora.jpg" alt="" loading="lazy" width="900" height="1125"></div>
+            <div>
+              <div class="marca-card__swatches"><i style="background:#000"></i><i style="background:#8e8e93"></i><i style="background:#ffffff"></i><i style="background:#b3122e"></i></div>
+              <p class="marca-card__leyenda">Negro · plata · un acento de color · mayúsculas espaciadas</p>
+            </div>
+          </div>
+          <figcaption><span class="flujo__n">2 · La identidad</span><h3>Las acoplamos a tu marca.</h3><p>Editamos con la paleta y el tono de tu identidad: mismo fondo, misma luz y mismo encuadre en todas las piezas. El catálogo se ve como una colección, no como fotos sueltas.</p></figcaption>
+        </figure>
+        <figure class="flujo__paso reveal">
+          <div class="flujo__img flujo__img--web"><img src="img/casos/inhospita-anillos.jpg" alt="Catálogo de anillos en inhospitajoyas.com con las fotos montadas" loading="lazy" width="1440" height="900"></div>
+          <figcaption><span class="flujo__n">3 · La web y el Instagram</span><h3>Las montamos donde venden.</h3><p>Fichas de producto, portada y categorías, con archivos livianos y bien nombrados para que la página cargue rápido y Google las encuentre. También quedan recortadas para historias y publicaciones.</p></figcaption>
+        </figure>
+      </div>
+
+      <div class="fotos__caso reveal">
+        <div class="fotos__galeria">
+          <img src="img/fotos/inhospita-abismo.jpg" alt="Anillo Abismo, plata con piedra negra" loading="lazy" width="900" height="1125">
+          <img src="img/fotos/inhospita-cora.jpg" alt="Anillo Cora Roto, corazón de plata partido" loading="lazy" width="900" height="1125">
+          <img src="img/fotos/inhospita-ilusion.jpg" alt="Anillo Ilusión, plata con piedra verde" loading="lazy" width="900" height="900">
+        </div>
+        <div class="fotos__txt">
+          <p class="eyebrow">Caso · Inhóspita Joyas</p>
+          <h3 class="h3">Joyería de autor y grillz, Santiago y Valparaíso.</h3>
+          <p>Anillos de plata 980 hechos a mano, con piedras y texturas que en una foto de celular se pierden. Los fotografiamos en estudio sobre negro, con reflejo y luz dura, para que el metal y las piedras hablen. Hoy son las fotos de su catálogo en inhospitajoyas.com.</p>
+          <div class="caso__acciones">
+            <button class="link" type="button" data-abrir="caso-inhospita">Ver cómo hicimos las fotos</button>
+            <a class="link" href="https://inhospitajoyas.com" target="_blank" rel="noopener">Visitar inhospitajoyas.com</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="fotos__nota">Una sesión de producto es media jornada, hasta 20 productos y 40 fotos editadas listas para web y redes. <a class="link" href="#cotizador">Agregarla en el cotizador</a></p>
     </div>
   </section>
 
@@ -410,6 +464,33 @@
       <h3>Qué de esto sirve para tu marca</h3>
       <p>Si ya tienes trayectoria pero tu web no la cuenta, no partimos de cero: rescatamos tu identidad, tus clientes y tus casos, y construimos sobre la plataforma y el dominio que ya tienes. Ordenar lo que existe suele valer más que inventar algo nuevo.</p>
       <a class="btn" href="#cotizador" data-cerrar>Cotizar algo así</a>
+    </div>
+  </div>
+</dialog>
+
+
+<!-- ================= MODAL · INHÓSPITA JOYAS ================= -->
+<dialog class="modal" id="caso-inhospita" aria-labelledby="inh-titulo">
+  <div class="modal__in">
+    <button class="modal__cerrar" type="button" data-cerrar aria-label="Cerrar">×</button>
+    <header class="modal__head">
+      <p class="eyebrow">Caso · Inhóspita Joyas · inhospitajoyas.com</p>
+      <h2 class="h2" id="inh-titulo">Cómo hicimos las fotos.</h2>
+      <p class="lead">Joyería de autor en plata 980 y grillz, con una identidad oscura y orgánica que las fotos tenían que respetar.</p>
+    </header>
+    <img class="modal__img" src="img/casos/inhospita-producto.jpg" alt="Ficha de producto en inhospitajoyas.com con la foto del anillo Bésame Mucho" loading="lazy" width="1440" height="900">
+    <ol class="relato">
+      <li class="relato__paso"><span class="relato__k">Punto de partida</span><h3>Piezas pequeñas, brillantes y llenas de detalle.</h3><p>Anillos con texturas, piedras y formas orgánicas. En una foto de celular el metal se ve plano, la piedra se apaga y el detalle que justifica el precio desaparece.</p></li>
+      <li class="relato__paso"><span class="relato__k">Definir la línea</span><h3>Negro, plata y reflejo.</h3><p>La marca es oscura y brillante, así que las fotos también: superficie negra con reflejo, luz dura que enciende los brillos del metal y un encuadre igual para todas las piezas. Esa decisión se toma antes de la sesión, mirando la identidad completa.</p></li>
+      <li class="relato__paso"><span class="relato__k">La sesión</span><h3>Cada pieza, con la misma luz.</h3><p>Fotografía de producto de cerca, con la misma distancia y el mismo fondo para toda la colección. Así las fichas del catálogo dialogan entre sí y el sitio se siente ordenado.</p></li>
+      <li class="relato__paso"><span class="relato__k">Edición</span><h3>Limpias, consistentes y livianas.</h3><p>Corrección de color, limpieza de polvo y rayas, negro parejo en todas las fotos y exportación en dos formatos: liviano para la web y recortado para Instagram.</p></li>
+      <li class="relato__paso"><span class="relato__k">Montaje</span><h3>En las fichas, la portada y las categorías.</h3><p>Cada producto con su foto principal y sus vistas; las categorías con una pieza representativa; la portada con la colección. Todo con nombres de archivo y pesos que ayudan a que la página cargue rápido.</p></li>
+      <li class="relato__paso"><span class="relato__k">Resultado</span><h3>Un catálogo que se ve como una colección.</h3><p>Las fotos que hoy vende Inhóspita Joyas en inhospitajoyas.com salieron de este proceso.</p></li>
+    </ol>
+    <div class="modal__adapta">
+      <h3>Qué de esto sirve para tu marca</h3>
+      <p>Si vendes productos pequeños (joyas, cerámica, cosmética, accesorios), el método es el mismo: definimos la línea con tu identidad, hacemos una sesión, editamos con criterio único y montamos las fotos en tu sitio y tus redes. Cambia el fondo, la luz y el tono; la disciplina no.</p>
+      <a class="btn" href="#cotizador" data-cerrar>Cotizar con sesión de fotos</a>
     </div>
   </div>
 </dialog>
