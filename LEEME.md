@@ -18,7 +18,7 @@ Sitio estático (HTML + CSS + JavaScript, sin dependencias ni build) para vender
 
 ## Antes de publicar (rellenar)
 
-1. `js/config.js`: `whatsapp`, `email`, `instagram`, nombres de la diseñadora y del fotógrafo. El nombre comercial es **Blind** (logo: tres lamas rosa, azul y verde, los colores del cruce diseño · informática · datos).
+1. `js/config.js`: `whatsapp`, `email`, `instagram`. El equipo son Benjamín Lang (programación y datos) y Andrea Ortega (diseño y fotografía), con sus enlaces. El nombre comercial es **Blind**; el logo es una B hecha de lamas de persiana en degradé rosa → azul → verde.
 2. `index.html`: el `<title>`, la `meta description` y el pie con razón social, RUT y dirección.
 3. `privacidad.html`: responsable y domicilio.
 4. Precios: en `js/config.js` cada ítem tiene `precio` (con IA, la mitad) y `precioSinIA` (el de la planilla). El cotizador muestra ambos y el ahorro. Fotografía, dominio y mantención no bajan. Si cambias la planilla, actualiza los dos valores.
@@ -49,7 +49,7 @@ Cloudflare Pages → conectar el repositorio `Langab/estudio-web` sin comando de
 
 ## Notas de diseño
 
-- Lenguaje visual: fondos blanco y gris claro, tipografía Geist (con SF Pro como respaldo en dispositivos Apple), botones tipo píldora, animaciones suaves y `prefers-reduced-motion` respetado. Paleta de acento: rosa (diseño), azul (informática) y verde (datos), los tres colores del cruce, presentes en el logo, la línea bajo cada título, los íconos y las etapas.
-- El computador sigue al mouse en todo el hero, flota solo, se arrastra en el celular, tiene brillo en pantalla y reacciona a los chips. Flechas del teclado cambian de rubro cuando la pantalla tiene el foco.
+- Identidad visual propia (no Apple): Bricolage Grotesque para títulos, Instrument Sans para texto, JetBrains Mono para precios, etiquetas y números. Textura de persiana (lamas horizontales) en el hero, el pie y las tarjetas oscuras. Botones rectos con el degradé tricolor al pasar el mouse, tarjetas con borde fino sin sombras, encabezados de sección alineados a la izquierda. Paleta de acento: rosa (diseño), azul (informática), verde (datos). `css/estilos.apple.bak` guarda la versión anterior por si quieres comparar.
+- El computador: se abre, la pantalla arranca con el logo y las lamas se abren, el sitio se construye por partes y un cursor recorre la página y hace clic en el botón principal antes de cambiar de rubro. Sigue al mouse, flota solo, se arrastra en el celular, y las flechas del teclado cambian de rubro cuando la pantalla tiene el foco. Cualquier interacción tuya detiene la demo automática.
 - El computador del hero se dibuja con CSS (sin imágenes). El mini sitio de la pantalla usa unidades de contenedor (`cqw`), así que escala solo.
 - Las marcas del computador (Luma Joyas, Greda Taller, Casa Lino, Estudio Pulso, Café Ladera) son de ejemplo, no clientes.

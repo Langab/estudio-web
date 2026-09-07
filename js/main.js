@@ -30,6 +30,8 @@
         <span class="persona__rol">${p.rol}</span>
         <h3 class="persona__nombre">${p.nombre}</h3>
         <p class="persona__desc">${p.desc}</p>
+        ${p.stack ? `<div class="persona__stack">${p.stack.map((t) => `<span>${t}</span>`).join("")}</div>` : ""}
+        ${p.enlaces ? `<div class="persona__links">${p.enlaces.map((e) => `<a class="link" href="${e.u}" target="_blank" rel="noopener">${e.t}</a>`).join("")}</div>` : ""}
       </article>`).join("");
     $$("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
   }
@@ -100,12 +102,44 @@
       };
       $$(".chip", chips).forEach((ch) => ch.classList.toggle("is-active", Number(ch.dataset.i) === i));
       if (instant || reduceMotion) { set(); return; }
-      mini.classList.add("is-switching");
-      setTimeout(() => { set(); mini.classList.remove("is-switching"); }, 260);
+      mini.classList.add("is-building");
+      setTimeout(() => { set(); void mini.offsetWidth; mini.classList.remove("is-building"); }, 240);
     }
 
-    function ciclo() { timer = setInterval(() => pintar((actual + 1) % S.rubros.length), 4200); }
-    function detenerCiclo() { if (timer) { clearInterval(timer); timer = null; } }
+    // Demo automática: un cursor recorre el sitio y hace clic en el botón principal, luego cambia el rubro
+    const screen = $(".mac__screen");
+    const cursor = $(".mac__cursor", screen);
+    const espera = (ms) => new Promise((r) => setTimeout(r, ms));
+    let demo = false;
+    function moverCursorA(el, ox = 0.5, oy = 0.5) {
+      const s = screen.getBoundingClientRect(), r = el.getBoundingClientRect();
+      if (!s.width || !r.width) return;
+      cursor.style.setProperty("--cx", (((r.left + r.width * ox) - s.left) / s.width * 100).toFixed(1) + "%");
+      cursor.style.setProperty("--cy", (((r.top + r.height * oy) - s.top) / s.height * 100).toFixed(1) + "%");
+    }
+    async function demoCiclo() {
+      demo = true;
+      await espera(900);
+      while (demo) {
+        const cta = $(".mini__cta", mini);
+        cursor.classList.add("is-visible");
+        moverCursorA($(".mini__card:nth-child(2) .mini__card-img", mini), 0.5, 0.5);
+        await espera(1300); if (!demo) break;
+        moverCursorA(cta, 0.55, 0.55);
+        await espera(1150); if (!demo) break;
+        cursor.classList.add("is-click"); cta.classList.add("is-pressed");
+        await espera(180);
+        cursor.classList.remove("is-click"); cta.classList.remove("is-pressed");
+        await espera(420); if (!demo) break;
+        pintar((actual + 1) % S.rubros.length);
+        await espera(2200);
+      }
+      cursor.classList.remove("is-visible");
+    }
+    function detenerDemo() { demo = false; cursor.classList.remove("is-visible"); }
+
+    function ciclo() { demoCiclo(); }
+    function detenerCiclo() { detenerDemo(); if (timer) { clearInterval(timer); timer = null; } }
     function siguiente() { pintar((actual + 1) % S.rubros.length); detenerCiclo(); sacudir(); }
     function anterior() { pintar((actual - 1 + S.rubros.length) % S.rubros.length); detenerCiclo(); sacudir(); }
 
@@ -119,10 +153,15 @@
 
     pintar(0, true);
 
-    // Apertura de la tapa
+    // Apertura de la tapa, encendido de la pantalla (las lamas se abren) y construcción del sitio
+    if (reduceMotion) { screen.classList.add("is-on"); }
+    else { mini.classList.add("is-building"); }
     requestAnimationFrame(() => setTimeout(() => {
       mac.classList.add("is-open");
-      if (!reduceMotion) setTimeout(() => { ciclo(); stage.classList.add("is-live"); }, 2000);
+      if (reduceMotion) return;
+      setTimeout(() => screen.classList.add("is-boot"), 700);
+      setTimeout(() => { screen.classList.add("is-on"); void mini.offsetWidth; mini.classList.remove("is-building"); }, 1900);
+      setTimeout(() => { stage.classList.add("is-live"); ciclo(); }, 2700);
     }, 350));
 
     // Inclinación: sigue al mouse en todo el hero
@@ -171,7 +210,6 @@
     }
 
     // Teclado
-    const screen = $(".mac__screen");
     screen.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " " || e.key === "ArrowRight") { e.preventDefault(); siguiente(); }
       if (e.key === "ArrowLeft") { e.preventDefault(); anterior(); }
