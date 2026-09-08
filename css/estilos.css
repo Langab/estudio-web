@@ -552,3 +552,71 @@ h1,h2,h3,.h2,.h3{font-family:var(--display);font-variation-settings:"opsz" 96}
   .modal[open] .modal__in{animation:none}
   .btn::before{transition:none}
 }
+
+/* =====================================================================
+   MEJORAS · navegación, jerarquía y uso en celular (sep 2026)
+   Criterios de ejemplos_webs_grandes/GUIA_DE_DISENO.md:
+   fondo sin blanco puro · contraste AA · una acción por pantalla ·
+   zonas táctiles de 44px · texto nunca bajo 14px en celular.
+   ===================================================================== */
+
+/* ---------- Paleta: fuera el blanco puro ---------- */
+:root{
+  --bg:#fbfaf9;          /* antes #ffffff */
+  --bg-2:#f1efeb;        /* gris de sección, más separado del fondo */
+  --ink-3:#6f727a;       /* antes #9a9ca3: 2,6:1 no pasaba contraste AA */
+  --line:#e6e3dd;
+  --line-2:#cdc9c1;
+}
+.nav{background:rgba(251,250,249,.88)}
+@media (max-width:900px){.nav.is-open,.nav.is-open .nav__links{background:var(--bg)}}
+
+/* ---------- Navegación: dónde estoy y cuánto falta ---------- */
+.nav__progreso{position:absolute;left:0;right:0;bottom:-1px;height:2px;pointer-events:none}
+.nav__progreso i{display:block;height:100%;width:0;background:var(--tri);transition:width .12s linear}
+.nav__links a[data-spy]{position:relative}
+.nav__links a[data-spy].is-actual{opacity:1}
+.nav__links a[data-spy].is-actual::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;border-radius:2px;background:var(--ink)}
+@media (min-width:901px){.nav__extra{display:none}}
+@media (max-width:900px){
+  .nav__links a[data-spy].is-actual::after{display:none}
+  .nav__links a[data-spy].is-actual{color:var(--ink);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+}
+
+/* ---------- Celular: legibilidad ---------- */
+@media (max-width:900px){
+  .sec{padding:clamp(56px,9vw,96px) 0}
+  .wrap{width:min(var(--wrap),calc(100% - 36px))}
+  .sec li,.modal li{font-size:14px;line-height:1.55}
+  .paso-caso__k,.etapa__cuando,.res__nota,.fotos__nota,.marca-card__leyenda,.hero__rubros-nota,small{font-size:13.5px;line-height:1.5}
+  .base__tag{font-size:12px}
+  .eyebrow{font-size:12.5px}
+  .lead{font-size:17px}
+}
+
+/* ---------- Celular: zonas táctiles de 44px ---------- */
+@media (max-width:900px){
+  .link{min-height:44px;align-items:center}
+  .chip{min-height:44px;display:inline-flex;align-items:center;font-size:12.5px;padding:10px 16px}
+  .vivo__item{min-height:44px;display:inline-flex;align-items:center;font-size:13px}
+  .stepper__btn{width:44px;height:44px;font-size:20px}
+  .btn--sm{padding:12px 18px;font-size:15px;border-radius:10px}
+  .foot nav a,.foot__in nav a{display:inline-flex;align-items:center;min-height:44px}
+  .nav__links a{padding:18px 0}
+  .foot{padding-bottom:108px}
+}
+
+/* ---------- Celular: una acción siempre a mano ---------- */
+.cta-movil{position:fixed;left:12px;right:12px;bottom:12px;z-index:39;display:none;gap:10px;transform:translateY(160%);transition:transform .45s var(--ease-out)}
+.cta-movil.is-visible{transform:none}
+.cta-movil__btn{flex:1;display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 18px;background:var(--ink);color:#fff;border-radius:13px;font-weight:600;font-size:16.5px;letter-spacing:-.01em;text-decoration:none;box-shadow:0 10px 30px rgba(17,18,20,.22)}
+.cta-movil__btn:active{transform:scale(.98)}
+.cta-movil__wa{width:54px;min-height:54px;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--verde);border:1px solid var(--line-2);border-radius:13px;box-shadow:0 10px 30px rgba(17,18,20,.12)}
+@media (max-width:900px){.cta-movil{display:flex}}
+@media (prefers-reduced-motion:reduce){.cta-movil{transition:none}.nav__progreso i{transition:none}}
+
+/* Etiquetas y logo del pie: piso de 12px y zona táctil completa */
+@media (max-width:900px){
+  .badge-ia,.vivo__label,.persona__stack span,.flujo__n,.persona__rol{font-size:12px}
+  .foot__logo{min-height:44px;align-items:center}
+}

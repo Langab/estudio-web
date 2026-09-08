@@ -308,3 +308,92 @@
     etapas();
   });
 })();
+
+/* =====================================================================
+   MEJORAS · progreso de lectura, sección activa y acción fija en celular
+   (sep 2026) Se añade aparte para no tocar el resto del archivo.
+   ===================================================================== */
+(function () {
+  "use strict";
+  const menos = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Barra de progreso: cuánto falta de una página larga */
+  function progreso() {
+    const barra = document.getElementById("nav-progreso");
+    if (!barra) return;
+    let pedido = false;
+    const pintar = () => {
+      const alto = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = alto > 0 ? Math.min(100, (window.scrollY / alto) * 100) : 0;
+      barra.style.width = pct.toFixed(1) + "%";
+      pedido = false;
+    };
+    const alScroll = () => { if (!pedido) { pedido = true; requestAnimationFrame(pintar); } };
+    window.addEventListener("scroll", alScroll, { passive: true });
+    window.addEventListener("resize", alScroll, { passive: true });
+    pintar();
+  }
+
+  /* Sección activa en el menú */
+  function seccionActiva() {
+    const enlaces = Array.from(document.querySelectorAll(".nav__links a[data-spy]"));
+    if (!enlaces.length || !("IntersectionObserver" in window)) return;
+    const mapa = new Map();
+    enlaces.forEach((a) => {
+      const sec = document.querySelector(a.getAttribute("href"));
+      if (sec) mapa.set(sec, a);
+    });
+    let visibles = new Set();
+    const pintar = () => {
+      let elegida = null;
+      mapa.forEach((a, sec) => {
+        if (visibles.has(sec) && (!elegida || sec.offsetTop < elegida.offsetTop)) elegida = sec;
+      });
+      enlaces.forEach((a) => a.classList.remove("is-actual"));
+      if (elegida) mapa.get(elegida).classList.add("is-actual");
+    };
+    const io = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => { e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target); });
+      pintar();
+    }, { rootMargin: "-35% 0px -55% 0px" });
+    mapa.forEach((a, sec) => io.observe(sec));
+  }
+
+  /* Barra de acción en celular: aparece pasado el hero y se quita donde estorba */
+  function ctaMovil() {
+    const barra = document.getElementById("cta-movil");
+    if (!barra) return;
+    const hero = document.querySelector(".hero");
+    const resBar = document.getElementById("res-bar");
+    const zonasMudas = ["#cotizador", "#contacto"].map((s) => document.querySelector(s)).filter(Boolean);
+    let enZonaMuda = false;
+    const pintar = () => {
+      const pasoElHero = window.scrollY > (hero ? hero.offsetHeight * 0.75 : 600);
+      const resumenArriba = resBar && resBar.classList.contains("is-visible");
+      const mostrar = pasoElHero && !enZonaMuda && !resumenArriba;
+      barra.classList.toggle("is-visible", mostrar);
+      barra.setAttribute("aria-hidden", mostrar ? "false" : "true");
+    };
+    if ("IntersectionObserver" in window && zonasMudas.length) {
+      const vistas = new Set();
+      const io = new IntersectionObserver((entradas) => {
+        entradas.forEach((e) => { e.isIntersecting ? vistas.add(e.target) : vistas.delete(e.target); });
+        enZonaMuda = vistas.size > 0;
+        pintar();
+      }, { rootMargin: "-20% 0px -20% 0px" });
+      zonasMudas.forEach((s) => io.observe(s));
+    }
+    let pedido = false;
+    window.addEventListener("scroll", () => {
+      if (!pedido) { pedido = true; requestAnimationFrame(() => { pintar(); pedido = false; }); }
+    }, { passive: true });
+    if (resBar) new MutationObserver(pintar).observe(resBar, { attributes: true, attributeFilter: ["class"] });
+    pintar();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (!menos) progreso();
+    seccionActiva();
+    ctaMovil();
+  });
+})();
