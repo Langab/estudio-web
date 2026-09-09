@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cotizador · Blind</title>
+  <meta name="description" content="Arma tu sitio web pieza por pieza y mira el precio al instante, en pesos chilenos. Desde $350.000, sin dejar tu correo.">
+  <meta name="theme-color" content="#efeeea">
+  <meta property="og:title" content="Arma tu sitio y mira el precio.">
+  <meta property="og:description" content="Arma tu sitio web pieza por pieza y mira el precio al instante, en pesos chilenos. Desde $350.000, sin dejar tu correo.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <link rel="canonical" href="https://langab.github.io/estudio-web/cotizador.html">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111214'/%3E%3Cg transform='translate(2 6.7) scale(0.2333)'%3E%3CclipPath id='o'%3E%3Cpath d='M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z'/%3E%3C/clipPath%3E%3Ccircle cx='60' cy='40' r='23' fill='%23fff'/%3E%3Cg clip-path='url(%23o)'%3E%3Crect x='0' y='11' width='120' height='6.5' fill='%23e8306f'/%3E%3Crect x='0' y='19.5' width='120' height='6.5' fill='%23a03cc0'/%3E%3Crect x='0' y='28' width='120' height='6.5' fill='%230a6cff'/%3E%3C/g%3E%3Cpath d='M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z' fill='none' stroke='%23fff' stroke-width='8' stroke-linejoin='round'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500;600&family=Cormorant+Garamond:wght@500&family=Nunito:wght@800&family=Archivo+Black&family=DM+Serif+Display:ital@1&family=Zilla+Slab:wght@600&display=swap">
+  <link rel="stylesheet" href="css/estilos.css?v=20260909">
+</head>
+<body>
+<div class="persiana-intro" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="nav">
+  <div class="nav__in wrap">
+    <a class="nav__logo" href="index.html" aria-label="Blind · inicio"><svg class="logo" viewBox="0 0 120 80" width="36" height="24" aria-hidden="true"><defs><clipPath id="ojo-nav"><path d="M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z"/></clipPath></defs><circle cx="60" cy="40" r="23" fill="currentColor"/><circle cx="53" cy="46" r="4" style="fill:var(--hl,#fff)" opacity=".9"/><g clip-path="url(#ojo-nav)"><rect x="0" y="11" width="120" height="6.5" fill="#e8306f"/><rect x="0" y="19.5" width="120" height="6.5" fill="#a03cc0"/><rect x="0" y="28" width="120" height="6.5" fill="#0a6cff"/></g><path d="M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/></svg><span data-cfg="nombre">Blind</span></a>
+    <button class="nav__burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <nav class="nav__links" id="menu" aria-label="Secciones">
+      <a href="index.html#casos">Casos</a>
+      <a href="index.html#fotos">Fotos</a>
+      <a href="index.html#pasos">Cómo miramos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="cotizador.html" aria-current="page">Cotizador</a>
+      <a class="btn btn--sm" href="#agenda">Agenda una reunión</a>
+    </nav>
+  </div>
+  <div class="nav__progreso" aria-hidden="true"><i id="nav-progreso"></i></div>
+</header>
+
+<main id="contenido">
+
+  <section class="hoja">
+    <div class="wrap wrap--narrow">
+      <a class="hoja__volver" href="index.html">Volver al inicio</a>
+      <p class="eyebrow">Cotizador</p>
+      <h1 class="h1-hoja">Arma tu sitio y <span class="acento">mira el precio</span>.</h1>
+      <p class="lead">Elige la base, súmale lo que necesites y el total se actualiza solo. Son los mismos precios que van en la propuesta, con el ahorro de la IA ya aplicado.</p>
+    </div>
+  </section>
+
+  <!-- ================= COTIZADOR ================= -->
+  <section class="sec config" id="cotizador" style="padding-top:clamp(16px,2.5vw,28px)">
+    <div class="wrap">
+
+      <div class="config__grid">
+        <div class="config__main">
+          <section class="paso">
+            <h3 class="paso__t"><span class="paso__n">1</span>Elige la base</h3>
+            <div class="bases" id="cfg-bases" role="radiogroup" aria-label="Base del sitio"></div>
+            <div class="fijos"><p class="fijos__t">Incluido en toda base</p><ul id="cfg-fijos"></ul></div>
+          </section>
+          <section class="paso">
+            <h3 class="paso__t"><span class="paso__n">2</span>Marca y fotos</h3>
+            <div class="opts" id="cfg-marca"></div>
+          </section>
+          <section class="paso">
+            <h3 class="paso__t"><span class="paso__n">3</span>Funciones</h3>
+            <div class="opts" id="cfg-funciones"></div>
+          </section>
+          <section class="paso">
+            <h3 class="paso__t"><span class="paso__n">4</span>Mantención mensual</h3>
+            <p class="paso__d">Se cobra aparte, mes a mes. Mantiene el sitio actualizado, respaldado y vigilado. Mínimo sugerido: 6 meses.</p>
+            <div class="planes" id="cfg-mant" role="radiogroup" aria-label="Plan de mantención"></div>
+          </section>
+          <section class="paso">
+            <h3 class="paso__t"><span class="paso__n">5</span>Para la propuesta</h3>
+            <div class="campos">
+              <label>Tu marca<input id="cfg-marca-input" type="text" placeholder="Nombre de tu emprendimiento" autocomplete="organization"></label>
+              <label>Instagram<input id="cfg-ig-input" type="text" placeholder="@tumarca"></label>
+              <label>Rubro<select id="cfg-rubro"><option value="">Elige uno</option></select></label>
+            </div>
+            <fieldset class="doc">
+              <legend>Documento tributario</legend>
+              <label><input type="radio" name="doc" value="boleta" checked> Boleta de honorarios (sin IVA)</label>
+              <label><input type="radio" name="doc" value="factura"> Factura (+19 % IVA)</label>
+            </fieldset>
+          </section>
+        </div>
+
+        <aside class="res" id="resumen" aria-live="polite">
+          <p class="res__label">Tu estimado</p>
+          <p class="res__total mono" id="res-total">$0</p>
+          <p class="res__doc" id="res-doc"></p>
+          <dl class="res__lineas"><div class="res__item"><dt>Base</dt><dd id="res-base"></dd></div></dl>
+          <ul class="res__extras" id="res-extras"></ul>
+          <div class="res__ia"><div class="res__item"><span>Sin IA habría costado</span><span id="res-sinia"></span></div><div class="res__item res__item--ahorro"><span>Tu ahorro con IA</span><span id="res-ahorro"></span></div></div>
+          <div class="res__item" id="res-iva" hidden><span>IVA 19 %</span><span id="res-iva-monto"></span></div>
+          <div class="res__split">
+            <div><span>Anticipo al aceptar</span><strong class="mono" id="res-anticipo"></strong></div>
+            <div><span>Saldo contra entrega</span><strong class="mono" id="res-saldo"></strong></div>
+          </div>
+          <div class="res__meta">
+            <div><span>Plazo estimado</span><strong id="res-plazo"></strong></div>
+            <div><span>Mantención</span><strong id="res-mant"></strong></div>
+          </div>
+          <a class="btn btn--block" href="#agenda">Agendar una reunión</a>
+          <a class="btn btn--ghost btn--block" id="res-wa" href="#" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <button class="link" id="res-copiar" type="button" style="align-self:center">Copiar resumen</button>
+          <p class="res__nota">Estimado referencial en pesos chilenos, válido 15 días. La propuesta formal va por escrito con alcance, plazos y condiciones. No incluye impresión, publicidad pagada, gestión de redes ni comisiones de la pasarela de pago.</p>
+        </aside>
+      </div>
+    </div>
+    <div class="res-bar" id="res-bar" aria-hidden="true"><div><span>Total estimado</span><strong class="mono" id="res-bar-total">$0</strong></div><a class="btn btn--sm" href="#resumen">Ver resumen</a></div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="sec sec--grey" id="faq">
+    <div class="wrap wrap--narrow">
+      <header class="sec__head reveal">
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2 class="h2">Lo que nos preguntan antes de empezar.</h2>
+      </header>
+      <div class="faq" data-stagger>
+        <details class="faq__item reveal"><summary>¿Por qué cuesta la mitad?</summary><p>Porque trabajamos con inteligencia artificial en el código, los textos, la edición y las pruebas: menos horas por el mismo estándar, y ese ahorro te lo traspasamos. Lo que no se acelera con IA, como la sesión de fotos o el dominio, mantiene su precio. Todo pasa igual por revisión humana y por la checklist de lanzamiento.</p></details>
+        <details class="faq__item reveal"><summary>¿Necesito tener inicio de actividades?</summary><p>Para un sitio informativo, no. Para cobrar con tarjeta, sí: desde octubre de 2025 las pasarelas exigen inicio de actividades en el SII y boleta electrónica. Te orientamos y, si hace falta, te decimos exactamente qué preguntarle a tu contador.</p></details>
+        <details class="faq__item reveal"><summary>¿Cuánto demora?</summary><p>Una Vitrina, unas 3 semanas. Con identidad visual y fotos, entre 5 y 8 semanas. Los plazos corren desde el pago del anticipo y la entrega de contenidos (textos, precios, fotos o la fecha de la sesión).</p></details>
+        <details class="faq__item reveal"><summary>¿Qué pasa si dejamos de trabajar juntos?</summary><p>Nada se rompe. Dominio, cuentas, código y diseño son tuyos. Te entregamos un archivo final con todo, quitamos nuestros accesos y dejamos por escrito cómo renovar el dominio.</p></details>
+        <details class="faq__item reveal"><summary>¿Boleta o factura?</summary><p>Emitimos boleta de honorarios, sin IVA. Si tu empresa necesita factura, se agrega el 19 % de IVA. El cotizador calcula los dos casos.</p></details>
+        <details class="faq__item reveal"><summary>¿Puedo editar el sitio yo?</summary><p>Sí. Cambias horarios, precios, fotos y textos por la vía que definimos contigo (archivo de configuración, panel o planilla), con una capacitación grabada y una guía. Los cambios de código los hacemos nosotros, para que nada se rompa.</p></details>
+        <details class="faq__item reveal"><summary>¿Qué no incluye?</summary><p>Impresión de papelería, publicidad pagada, gestión de redes sociales, fotos de stock ni licencias de plataformas pagadas. Las comisiones por cada venta las cobra la pasarela, a tu nombre.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AGENDA ================= -->
+  <section class="sec sec--grey agenda" id="agenda">
+    <div class="wrap">
+      <div class="agenda__grid">
+        <div class="agenda__pitch reveal">
+          <p class="eyebrow">Hablemos</p>
+          <h2 class="h2">Ya tienes el número. <span class="acento">Ahora conversemos</span>.</h2>
+          <p class="lead">En la reunión revisamos tu cotización línea por línea: sacamos lo que sobra, agregamos lo que falta y te la mandamos por escrito.</p>
+          <ul class="agenda__lista">
+            <li><svg class="agenda__tic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.4l2.6 2.6L16 9.6" stroke="#0a6cff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Te preguntamos <b>qué vendes y a quién</b>, y miramos juntos tu Instagram.</span></li>
+            <li><svg class="agenda__tic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.4l2.6 2.6L16 9.6" stroke="#e8306f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Te decimos <b>qué haríamos y qué no</b>, con plazos y precio reales.</span></li>
+            <li><svg class="agenda__tic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M8 12.4l2.6 2.6L16 9.6" stroke="#1fa34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Al día siguiente te llega la <b>propuesta por escrito</b>, válida 15 días.</span></li>
+          </ul>
+          <p style="margin:24px 0 0"><a class="link" href="index.html#casos">Mira antes lo que hemos hecho</a></p>
+        </div>
+
+        <div class="agenda__caja reveal" id="agenda-caja">
+          <div class="agenda__respaldo" id="agenda-respaldo">
+            <h3>Escríbenos y coordinamos la hora</h3>
+            <p>Cuéntanos de tu marca por WhatsApp o por correo y te proponemos dos horarios el mismo día.</p>
+            <div class="agenda__botones">
+              <a class="btn btn--lg" data-wa href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+              <a class="link" data-mail href="#"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div>
+      <a class="foot__logo" href="index.html"><svg class="logo" viewBox="0 0 120 80" width="40" height="27" aria-hidden="true"><defs><clipPath id="ojo-pie"><path d="M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z"/></clipPath></defs><circle cx="60" cy="40" r="23" fill="currentColor"/><circle cx="53" cy="46" r="4" style="fill:var(--hl,#fff)" opacity=".9"/><g clip-path="url(#ojo-pie)"><rect x="0" y="11" width="120" height="6.5" fill="#e8306f"/><rect x="0" y="19.5" width="120" height="6.5" fill="#a03cc0"/><rect x="0" y="28" width="120" height="6.5" fill="#0a6cff"/></g><path d="M8 40 C 30 8 90 8 112 40 C 90 72 30 72 8 40 Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="round"/></svg><span data-cfg="nombre">Blind</span></a>
+      <p class="foot__tag">Diseño, código y datos en <span data-cfg="ciudad"></span>.</p>
+    </div>
+    <nav aria-label="Enlaces del sitio">
+      <a href="index.html#casos">Casos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="cotizador.html">Cotizador</a>
+      <a href="#agenda">Agenda una reunión</a>
+      <a href="privacidad.html">Aviso de privacidad</a>
+      <a data-ig hidden href="#" target="_blank" rel="noopener"></a>
+      <a data-linkedin href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a data-mail href="#"></a>
+    </nav>
+    <p class="foot__legal">© <span data-year></span> <span data-cfg="nombre"></span> · [Nombre o razón social] · RUT [xx.xxx.xxx-x] · [Dirección de contacto] · Santiago, Chile</p>
+  </div>
+</footer>
+
+<div class="cta-movil" id="cta-movil" aria-hidden="true">
+  <a class="cta-movil__btn" href="#agenda">Agenda una reunión</a>
+  <a class="cta-movil__wa" data-wa href="#" target="_blank" rel="noopener" aria-label="Escribirnos por WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.22.25-.87.85-.87 2.07s.89 2.4 1.02 2.56c.12.17 1.75 2.67 4.24 3.75.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg></a>
+</div>
+
+<script src="js/config.js?v=20260909"></script>
+<script src="js/cotizador.js?v=20260909"></script>
+<script src="js/main.js?v=20260909"></script>
+</body>
+</html>

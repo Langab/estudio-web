@@ -39,11 +39,13 @@
   /* ---------- Nav ---------- */
   function nav() {
     const bar = $(".nav");
+    if (!bar) return;
     const onScroll = () => bar.classList.toggle("is-scrolled", window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     const btn = $(".nav__burger");
     const menu = $(".nav__links");
+    if (!btn || !menu) return;
     btn.addEventListener("click", () => {
       const open = bar.classList.toggle("is-open");
       btn.setAttribute("aria-expanded", open);
@@ -297,6 +299,96 @@
     new IntersectionObserver((en) => { resumenVisible = en[0].isIntersecting; pintar(); }, { threshold: 0.2 }).observe(res);
   }
 
+
+  /* ---------- Los 5 pasos: carrusel y ojo que se abre ---------- */
+  function pasos() {
+    const pista = $("#pasos-pista");
+    if (!pista) return;
+    const fichas = Array.from(pista.children);
+    if (!fichas.length) return;
+    const prev = $("#paso-prev"), next = $("#paso-next");
+    const guia = $("#ojo-guia"), barra = $("#ojo-guia-barra"), num = $("#ojo-guia-n");
+
+    // Medidas cacheadas: así pintar() en cada scroll no fuerza recálculo de diseño.
+    let medidas = [], tope = 0;
+    const medir = () => {
+      const origen = fichas[0].offsetLeft;
+      medidas = fichas.map((f) => ({ izq: f.offsetLeft - origen, ancho: f.offsetWidth }));
+      tope = Math.max(0, pista.scrollWidth - pista.clientWidth - 1);
+    };
+
+    const pintar = () => {
+      const x = pista.scrollLeft, ancho = pista.clientWidth;
+      // El ojo se abre según cuántos pasos alcanzas a leer completos, no según
+      // cuántas veces aprietas la flecha: en pantalla ancha ya se ven tres.
+      let leidos = 1;
+      medidas.forEach((m, k) => { if (m.izq + m.ancho <= x + ancho + 8) leidos = k + 1; });
+      if (prev) prev.disabled = x <= 1;
+      if (next) next.disabled = x >= tope;
+      if (guia) guia.dataset.paso = String(leidos);
+      if (barra) barra.style.width = ((leidos / fichas.length) * 100).toFixed(1) + "%";
+      if (num) num.textContent = String(leidos);
+      fichas.forEach((f, k) => {
+        const m = medidas[k];
+        f.classList.toggle("is-vista", m.izq < x + ancho - 60 && m.izq + m.ancho > x + 60);
+      });
+    };
+
+    const mover = (paso) => {
+      const x = pista.scrollLeft;
+      const sig = paso > 0 ? medidas.find((m) => m.izq > x + 8)
+                           : [...medidas].reverse().find((m) => m.izq < x - 8);
+      pista.scrollTo({ left: sig ? sig.izq : (paso > 0 ? tope : 0), behavior: reduceMotion ? "auto" : "smooth" });
+    };
+    if (prev) prev.addEventListener("click", () => mover(-1));
+    if (next) next.addEventListener("click", () => mover(1));
+    pista.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") { e.preventDefault(); mover(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); mover(-1); }
+    });
+    pista.addEventListener("scroll", pintar, { passive: true });
+    window.addEventListener("resize", () => { medir(); pintar(); }, { passive: true });
+    medir(); pintar();
+    // Las fuentes cambian el ancho de las fichas: vuelve a medir al terminar de cargar.
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { medir(); pintar(); });
+  }
+
+  /* ---------- Agenda: calendario de Calendly ---------- */
+  function agenda() {
+    const cfg = S.agenda || {};
+    const url = (cfg.calendly || "").trim();
+    if (!url) return;                     // sin enlace configurado queda el respaldo por WhatsApp
+    let pedido = null;
+    const cargar = () => (pedido = pedido || new Promise((ok, falla) => {
+      if (window.Calendly) return ok();
+      const css = document.createElement("link");
+      css.rel = "stylesheet"; css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      const js = document.createElement("script");
+      js.src = "https://assets.calendly.com/assets/external/widget.js";
+      js.async = true; js.onload = ok; js.onerror = falla;
+      document.head.appendChild(js);
+    }));
+
+    const caja = $("#agenda-caja"), respaldo = $("#agenda-respaldo");
+    const conColores = url + (url.indexOf("?") >= 0 ? "&" : "?") +
+      "hide_gdpr_banner=1&background_color=ffffff&text_color=16171a&primary_color=0a6cff";
+
+    if (caja) cargar().then(() => {
+      const hueco = document.createElement("div");
+      hueco.className = "calendly-inline-widget";
+      if (respaldo) respaldo.hidden = true;
+      caja.appendChild(hueco);
+      window.Calendly.initInlineWidget({ url: conColores, parentElement: hueco });
+    }).catch(() => { if (respaldo) respaldo.hidden = false; });
+
+    if (cfg.globo !== false) cargar().then(() => window.Calendly.initBadgeWidget({
+      url: conColores,
+      text: cfg.textoGlobo || "Agenda una reunión",
+      color: "#16171a", textColor: "#ffffff", branding: false
+    })).catch(() => {});
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     aplicarConfig();
     barraCotizador();
@@ -306,6 +398,8 @@
     cruce();
     modales();
     etapas();
+    pasos();
+    agenda();
   });
 })();
 
@@ -365,7 +459,7 @@
     if (!barra) return;
     const hero = document.querySelector(".hero");
     const resBar = document.getElementById("res-bar");
-    const zonasMudas = ["#cotizador", "#contacto"].map((s) => document.querySelector(s)).filter(Boolean);
+    const zonasMudas = ["#agenda", "#cotizador", "#contacto"].map((s) => document.querySelector(s)).filter(Boolean);
     let enZonaMuda = false;
     const pintar = () => {
       const pasoElHero = window.scrollY > (hero ? hero.offsetHeight * 0.75 : 600);

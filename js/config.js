@@ -29,10 +29,21 @@ window.SITIO = {
       enlaces: [{ t: "Behance", u: "https://www.behance.net/andreaortega22" }, { t: "LinkedIn", u: "https://www.linkedin.com/in/andreaortegaguz/" }] }
   ],
 
+  // ---------- Agenda (calendario tipo Calendly) ----------
+  // Pega aquí tu enlace de Calendly y la página muestra el calendario incrustado
+  // más el globo flotante. Si lo dejas vacío, queda el respaldo por WhatsApp.
+  // Ejemplo: "https://calendly.com/blind-estudio/conversemos"
+  agenda: {
+    calendly: "",
+    globo: true,                          // globo flotante abajo a la derecha
+    textoGlobo: "Agenda una reunión"
+  },
+
   // ---------- Sitios en vivo (prueba social) ----------
   enVivo: [
     { dominio: "salacrisol.cl", url: "https://salacrisol.cl" },
-    { dominio: "entrecomillas.cl", url: "https://entrecomillas.cl" }
+    { dominio: "entrecomillas.cl", url: "https://entrecomillas.cl" },
+    { dominio: "inhospitajoyas.com", url: "https://inhospitajoyas.com" }
   ],
 
   // ---------- Rubros de demostración (el computador del hero) ----------
@@ -91,6 +102,7 @@ window.SITIO = {
   ],
 
   // ---------- Tarifas ----------
+  // Precios revisados el 9-sep-2026 contra el mapa de competencia (carpeta competencia/).
   // Mismos códigos que 02_Plantilla_Presupuestos.xlsx. "precio" = precio con IA (mitad);
   // "precioSinIA" = precio de lista tradicional (el de la planilla). Fotografía y dominio no bajan: son costo de terceros.
   tarifas: {
@@ -113,13 +125,13 @@ window.SITIO = {
       id: "emprendedor", codigo: "W3", nombre: "Emprendedor", precio: 375000, precioSinIA: 750000, semanas: 3, destacado: true,
       para: "Para marcas que quieren verse profesionales de una vez: logo, fotos propias, web con subpáginas e inscripciones.",
       trae: ["Portada + subpáginas (6 a 10)", "Catálogo o grilla de horarios", "Contenido editable por ti"],
-      incluye: ["W7", "W10", "D1", "D3", "F2"], mantencion: "M2"
+      incluye: ["W7", "W10", "W12", "D1", "D3", "F2"], mantencion: "M2"
     },
     {
       id: "tienda", codigo: "W5", nombre: "Tienda", precio: 495000, precioSinIA: 990000, semanas: 4,
       para: "Para quienes venden productos y hoy cierran ventas por DM: catálogo, carrito, pago con tarjeta y páginas legales.",
-      trae: ["Hasta 30 productos", "Carrito y checkout con pasarela", "Correo de confirmación y legales"],
-      incluye: ["W8", "W10", "D1", "D3", "F1"], mantencion: "M3"
+      trae: ["Hasta 30 productos, editables por ti", "Carrito y checkout con pasarela", "Correo de confirmación y legales"],
+      incluye: ["W8", "W10", "W12", "D1", "D3", "F1"], mantencion: "M3"
     }
   ],
 
@@ -129,12 +141,12 @@ window.SITIO = {
     { codigo: "P2", nombre: "DNS, HTTPS y hosting sin costo mensual", precio: 22500, precioSinIA: 45000 },
     { codigo: "P3", nombre: "Puesta en marcha con checklist y 30 días de garantía", precio: 30000, precioSinIA: 60000 },
     { codigo: "P4", nombre: "Capacitación y guía para editar tu sitio", precio: 20000, precioSinIA: 40000 },
-    { codigo: "W11", nombre: "SEO básico, ficha de Google y Search Console", precio: 40000, precioSinIA: 80000 }
+    { codigo: "W11", nombre: "SEO básico, ficha de Google y Search Console", precio: 60000, precioSinIA: 120000 }
   ],
 
   // Extras (toggles). grupo: "marca" | "funciones". tipo: "toggle" | "cantidad".
   extras: [
-    { codigo: "D1", grupo: "marca", nombre: "Identidad visual", desc: "Logo en versiones, paleta y tipografías. Archivos SVG y PNG.", precio: 160000, precioSinIA: 320000, semanas: 1 },
+    { codigo: "D1", grupo: "marca", nombre: "Identidad visual", desc: "Logo en versiones, paleta y tipografías. Archivos SVG y PNG.", precio: 180000, precioSinIA: 360000, semanas: 1 },
     { codigo: "D2", grupo: "marca", nombre: "Manual de marca", desc: "PDF con usos correctos, redes y papelería.", precio: 90000, precioSinIA: 180000 },
     { codigo: "D3", grupo: "marca", nombre: "Plantillas para Instagram", desc: "5 plantillas editables en Canva: productos, horarios, historias.", precio: 45000, precioSinIA: 90000 },
     { codigo: "D4", grupo: "marca", nombre: "Etiquetas o packaging", desc: "Diseño listo para imprenta (impresión no incluida).", precio: 60000, precioSinIA: 120000 },
@@ -143,6 +155,7 @@ window.SITIO = {
     { codigo: "F3", grupo: "marca", nombre: "Jornada completa de fotos", desc: "Producto + marca, hasta 80 fotos y 3 videos cortos para reels.", precio: 450000, semanas: 1, foto: true },
     { codigo: "W10", grupo: "funciones", nombre: "Redacción de textos", desc: "Escribimos los textos a partir de una entrevista contigo, con IA y revisión humana.", precio: 60000, precioSinIA: 120000 },
     { codigo: "W7", grupo: "funciones", nombre: "Inscripciones o pedidos a planilla + panel", desc: "Formulario conectado a tu Google Sheets y panel privado para marcar pagos.", precio: 75000, precioSinIA: 150000 },
+    { codigo: "W12", grupo: "funciones", nombre: "Panel de autogestión", desc: "Panel privado para que agregues, edites y ocultes productos, eventos y fotos desde el celular. Incluye video y guía.", precio: 50000, precioSinIA: 100000 },
     { codigo: "W8", grupo: "funciones", nombre: "Pagos con link o botón", desc: "Flow, Mercado Pago o Webpay a tu nombre, probado con compra real.", precio: 40000, precioSinIA: 80000 },
     { codigo: "W9", grupo: "funciones", nombre: "Pagos integrados con confirmación en servidor", desc: "Checkout completo: el pago se confirma en servidor y queda registrado.", precio: 140000, precioSinIA: 280000 },
     { codigo: "W4", grupo: "funciones", tipo: "cantidad", nombre: "Página adicional", desc: "Una página extra con el mismo diseño.", precio: 22500, precioSinIA: 45000, max: 10 },
@@ -151,8 +164,8 @@ window.SITIO = {
 
   // Planes de mantención (mes a mes, mínimo sugerido 6 meses).
   mantencion: [
-    { codigo: "M1", nombre: "Básico", precio: 35000, para: "Sitio informativo", trae: ["2 h de cambios al mes", "Monitoreo de caídas 24/7", "Respaldo mensual", "Renovación de dominio y certificado", "WhatsApp: 48 h hábiles"] },
-    { codigo: "M2", nombre: "Estándar", precio: 65000, para: "Contenidos frecuentes", trae: ["4 h de cambios al mes", "Horarios, precios y fotos nuevas", "Informe mensual de visitas", "Reunión trimestral", "WhatsApp: 24 h hábiles"] },
-    { codigo: "M3", nombre: "Tienda", precio: 110000, para: "E-commerce", trae: ["6 h de cambios al mes", "Hasta 10 productos nuevos al mes", "Soporte de pagos y conciliación", "Respaldo semanal", "Reunión mensual"] }
+    { codigo: "M1", nombre: "Básico", precio: 45000, para: "Sitio informativo", trae: ["Panel de autogestión activo y respaldado", "2 h de cambios al mes", "Monitoreo de caídas 24/7", "Respaldo mensual", "Renovación de dominio y certificado", "WhatsApp: 48 h hábiles"] },
+    { codigo: "M2", nombre: "Estándar", precio: 75000, para: "Contenidos frecuentes", trae: ["Panel de autogestión y revisión de lo que publicas", "4 h de cambios al mes", "Horarios, precios y fotos nuevas", "Informe mensual de visitas", "Reunión trimestral", "WhatsApp: 24 h hábiles"] },
+    { codigo: "M3", nombre: "Tienda", precio: 130000, para: "E-commerce", trae: ["Panel de autogestión con campos nuevos a pedido", "6 h de cambios al mes", "Hasta 10 productos nuevos al mes", "Soporte de pagos y conciliación", "Respaldo semanal", "Reunión mensual"] }
   ]
 };
