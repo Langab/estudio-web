@@ -20,10 +20,10 @@ Sitio estático (HTML + CSS + JavaScript, sin dependencias ni build) para vender
 
 ## Antes de publicar (rellenar)
 
-1. `js/config.js`: `whatsapp`, `email`, `instagram`. El equipo son Benjamín Lang (programación y datos) y Andrea Ortega (diseño y fotografía), con sus enlaces. El nombre comercial es **Blind**; el logo es un ojo negro que mira desde abajo de una persiana de tres lamas (rosa, violeta, azul). Está en el menú, el pie, el favicon y el arranque de la pantalla del computador; el SVG vive inline en `index.html`. Los enlaces de correo muestran "Mándanos un correo" (la dirección va solo en el `mailto:`).
+1. `js/config.js`: `whatsapp`, `email`, `instagram`. El equipo son Benjamín Lang (programación y datos) y Andrea Ortega (diseño y fotografía), con sus enlaces. El nombre comercial es **Blikk** ("mirada" en noruego; el 9 de septiembre de 2026 dejó de llamarse Blikk); el logo es un ojo negro que mira desde abajo de una persiana de tres lamas (rosa, violeta, azul). Está en el menú, el pie, el favicon y el arranque de la pantalla del computador; el SVG vive inline en `index.html`. Los enlaces de correo muestran "Mándanos un correo" (la dirección va solo en el `mailto:`).
 2. `index.html`: el `<title>`, la `meta description` y el pie con razón social, RUT y dirección.
 3. `privacidad.html`: responsable y domicilio.
-3.b **`js/config.js` → `agenda.calendly`: pega tu enlace de Calendly** (por ejemplo `https://calendly.com/blind-estudio/conversemos`). Mientras esté vacío, la sección "Cuéntanos tu idea" muestra el respaldo por WhatsApp y correo. Al pegarlo aparecen el calendario incrustado y el globo flotante abajo a la derecha (oculto en celular, donde ya está la barra fija). El `_headers` ya permite los dominios de Calendly.
+3.b **`js/config.js` → `agenda.calendly`: pega tu enlace de Calendly** (por ejemplo `https://calendly.com/blikk-estudio/conversemos`). Mientras esté vacío, la sección "Cuéntanos tu idea" muestra el respaldo por WhatsApp y correo. Al pegarlo aparecen el calendario incrustado y el globo flotante abajo a la derecha (oculto en celular, donde ya está la barra fija). El `_headers` ya permite los dominios de Calendly.
 4. Precios: en `js/config.js` cada ítem tiene `precio` (con IA, la mitad) y `precioSinIA` (el de la planilla). El cotizador muestra ambos y el ahorro. Fotografía, dominio y mantención no bajan. Si cambias la planilla, actualiza los dos valores.
 
 ## Cómo verlo en el computador

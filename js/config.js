@@ -6,13 +6,14 @@
 
 window.SITIO = {
   // ---------- Identidad ----------
-  nombre: "Blind",                        // nombre comercial
+  nombre: "Blikk",                        // nombre comercial ("mirada" en noruego)
   ciudad: "Santiago de Chile",
   claim: "Sitios web completos para marcas que hoy viven en Instagram. Potenciados con IA.",
+  significado: "Blikk es «mirada» en noruego.",  // se muestra en el pie de todas las páginas
 
   // ---------- Contacto ----------
   whatsapp: "56963095562",                // solo dígitos, con código de país (sin +)
-  whatsappSaludo: "Hola Benjamín, vi la página de Blind y quiero conversar sobre un sitio para mi marca.",
+  whatsappSaludo: "Hola Benjamín, vi la página de Blikk y quiero conversar sobre un sitio para mi marca.",
   email: "benjalang1997@gmail.com",
   instagram: "",                          // ej: "estudio.lang" · vacío = se oculta el enlace
   linkedin: "https://www.linkedin.com/in/benjamin-lang-a78229207/",
@@ -20,11 +21,11 @@ window.SITIO = {
   // ---------- Equipo ----------
   equipo: [
     { nombre: "Benjamín Lang", rol: "Desarrollo web y datos",
-      desc: "Desarrollador web y experto en datos, con más de cinco años programando. Construye sitios y aplicaciones web de punta a punta: front-end, integraciones con pagos y planillas, paneles de administración y despliegue en Cloudflare. Viene del análisis de datos a gran escala: automatizó los pipelines de control de calidad del Censo 2024 en el INE y diseña dashboards e informes automáticos para el SLEP Santa Rosa. En Blind escribe el código, conecta pagos y planillas, y mide lo que pasa después.",
+      desc: "Desarrollador web y experto en datos, con más de cinco años programando. Construye sitios y aplicaciones web de punta a punta: front-end, integraciones con pagos y planillas, paneles de administración y despliegue en Cloudflare. Viene del análisis de datos a gran escala: automatizó los pipelines de control de calidad del Censo 2024 en el INE y diseña dashboards e informes automáticos para el SLEP Santa Rosa. En Blikk escribe el código, conecta pagos y planillas, y mide lo que pasa después.",
       stack: ["JavaScript", "HTML / CSS", "Python", "SQL", "R", "Git", "Cloudflare", "Apps Script", "Power BI"],
       enlaces: [{ t: "LinkedIn", u: "https://www.linkedin.com/in/benjamin-lang-a78229207/" }, { t: "GitHub", u: "https://github.com/Langab" }] },
     { nombre: "Andrea Ortega", rol: "Diseño y fotografía",
-      desc: "Diseñadora gráfica titulada en la Universidad de Valparaíso, con paso por la Universidad del País Vasco. Branding, packaging, dirección de arte y fotografía de producto: dirigió el arte y el packaging de Imanix by Braintoys y fotografió los catálogos de Inhóspita Joyas y Masa Madre Gourmet. En Blind crea tu identidad, tus plantillas para Instagram y tus fotos.",
+      desc: "Diseñadora gráfica titulada en la Universidad de Valparaíso, con paso por la Universidad del País Vasco. Branding, packaging, dirección de arte y fotografía de producto: dirigió el arte y el packaging de Imanix by Braintoys y fotografió los catálogos de Inhóspita Joyas y Masa Madre Gourmet. En Blikk crea tu identidad, tus plantillas para Instagram y tus fotos.",
       stack: ["Identidad visual", "Packaging", "Fotografía de producto", "Retoque", "Figma", "Adobe", "Shopify"],
       enlaces: [{ t: "Behance", u: "https://www.behance.net/andreaortega22" }, { t: "LinkedIn", u: "https://www.linkedin.com/in/andreaortegaguz/" }] }
   ],
@@ -32,7 +33,7 @@ window.SITIO = {
   // ---------- Agenda (calendario tipo Calendly) ----------
   // Pega aquí tu enlace de Calendly y la página muestra el calendario incrustado
   // más el globo flotante. Si lo dejas vacío, queda el respaldo por WhatsApp.
-  // Ejemplo: "https://calendly.com/blind-estudio/conversemos"
+  // Ejemplo: "https://calendly.com/blikk-estudio/conversemos"
   agenda: {
     calendly: "",
     globo: true,                          // globo flotante abajo a la derecha
